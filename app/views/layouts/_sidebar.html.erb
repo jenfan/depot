@@ -9,7 +9,8 @@
      <li><a href="http://localhost:3000">Home</a></li>
      <li><a href="http://www..../faq">Questions</a></li>
      <li><a href="http://www..../news">News</a></li>
-     <li><a href="http://www..../contact">Contact</a></li>
+     <li><%= link_to 'Login', login_path %></li>
+     <li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
      <li style="color:white !important">kol-vo obrashenik = <%= session[:count] %></li>
 	</ul>
 </div>

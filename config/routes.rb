@@ -1,4 +1,13 @@
 Demo::Application.routes.draw do
+  resources :users
+
+  get 'admin' => 'admin#index'
+  controller :sessions do
+    get 'login' => :new, as: 'login'
+    post 'login' => :create
+    delete 'logout' => :destroy, as: 'logout'
+  end
+
   resources :line_items do
     member do
       get 'remove_item'
