@@ -1,19 +1,23 @@
 class SessionsController < ApplicationController
   def new
+    
   end
 
   def create
-  	user = User.find_by_name(params[:name])
-	if user and user.authenticate(params[:password])
-	    session[:user_id] = user.id
-	    redirect_to admin_url
-	else
-	    redirect_to login_url, alert: "Неверная комбинация имени и пароля"
-	end
+    user = User.find_by_email(params[:session][:email].downcase)
+      if user && user.authenticate(params[:session][:password])
+        # Sign the user in and redirect to the user's show page.
+        sign_in user
+        redirect_back_or user
+      else
+        flash.now[:error] = "Wrong email or password"
+        render 'new'
+        # Create an error message and re-render the signin form.
+      end
   end
 
   def destroy
-  session[:user_id] = nil
-	redirect_to store_url, notice: "Сеанс работы завершен"
+    sign_out
+    redirect_to root_path
   end
 end

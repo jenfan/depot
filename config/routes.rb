@@ -1,12 +1,21 @@
 Demo::Application.routes.draw do
-  resources :users
+  get "taxonomies/new"
+  get "taxonomies/edit"
+  get "taxonomies/delete"
+  resources :orders
 
-  get 'admin' => 'admin#index'
-  controller :sessions do
-    get 'login' => :new, as: 'login'
-    post 'login' => :create
-    delete 'logout' => :destroy, as: 'logout'
-  end
+  root to: 'store#index', as: 'store' # ...
+
+  resources :carts
+  resources :products
+  resources :users
+  resources :sessions , only: [:new, :create, :destroy]
+
+  #get 'admin' => 'admin#index'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
+  get '/signin', to: 'sessions#new'
+  get '/signup', to: 'users#new'
+  get "store/index"
 
   resources :line_items do
     member do
@@ -14,12 +23,9 @@ Demo::Application.routes.draw do
     end
   end
   
-  resources :carts
 
-  get "store/index"
-  resources :products
+  
 
-  root to: 'store#index', as: 'store' # ...
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
