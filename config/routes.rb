@@ -1,12 +1,10 @@
 Demo::Application.routes.draw do
-  get "taxonomies/new"
-  get "taxonomies/edit"
-  get "taxonomies/delete"
   resources :orders
 
   root to: 'store#index', as: 'store' # ...
 
   resources :carts
+  get "/products/:category", to: 'products#show_category', as: 'category'
   resources :products
   resources :users
   resources :sessions , only: [:new, :create, :destroy]
@@ -16,6 +14,10 @@ Demo::Application.routes.draw do
   get '/signin', to: 'sessions#new'
   get '/signup', to: 'users#new'
   get "store/index"
+
+  
+  get "/products/:category/:subcategory", to: 'products#show_subcategory', as: 'subcategory'
+  get "/products/:category/:subcategory/:id", to: 'products#show', as: 'show_by_id'
 
   resources :line_items do
     member do

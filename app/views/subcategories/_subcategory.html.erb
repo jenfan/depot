@@ -1,0 +1,6 @@
+<% if subcategory.category_id==category_id %>
+<li class="dropdown <%= 'active' if subcategory.url_name == params[:subcategory] %> ">
+	<%= link_to subcategory.name, subcategory_path(category_url, subcategory.url_name)  %>
+</li>
+
+<% end %>

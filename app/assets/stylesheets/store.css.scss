@@ -23,7 +23,7 @@
 			float: left;
 			width: 25%;
 			margin: 0 2% 30px 3%;
-			height: 453px;
+			height: 253px;
 		    overflow: hidden;
 			min-height: 100px;
 
@@ -34,7 +34,6 @@
 		        position: absolute;
 			}
 			p, div.price_line {
-		    margin-left: 100px;
 		    margin-top: 0.5em;
 		    margin-bottom: 0.8em;
 				form, div {
@@ -42,15 +41,13 @@
 				    }
 			}
 			h3 {
-		        font-size: 120%;
+		        font-size: 90%;
 		        font-family: sans-serif;
-		        margin-left: 100px;
 		        margin-top: 0;
 		        margin-bottom: 2px;
 		        color: #227;
 		    }
 		    p, div.price_line {
-		        margin-left: 100px;
 		        margin-top: 0.5em;
 		        margin-bottom: 0.8em;
 		}

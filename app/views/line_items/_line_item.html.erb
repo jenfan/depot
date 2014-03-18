@@ -1,9 +1,27 @@
+<% if line_item.product %>
 <% if line_item == @current_item %>
 	<tr id = "current_item" >
 <% else %>
 	<tr>
 <% end %>
- <td><%= link_to 'del', remove_item_line_item_path(id: line_item), remote: true %><%= line_item.quantity %>&times;<%= number_to_currency(line_item.product.price) %></td>
- <td><%= line_item.product.title %></td>
- <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+ <td class="del">
+ 	<%= link_to 'del', remove_item_line_item_path(id: line_item), remote: true %>
+ </td>
+ <td class="photo">
+ 	<a href="/product/1856"><img src="http://img.ikra-ikra.ru/attach/6655/w60h60" alt=""></a>
+ </td>
+<td class="title">
+	<%= line_item.product.title %>
+</td>
+ <td class="price item_price"><%= line_item.product.price %>р &times; <%= line_item.quantity %></td>
+<td class="count_td">
+	<small>количество</small><br>
+	<div class="count">
+		<a href="javascript://" onclick="updateCart(2,1856); return false"><img src="plus.gif" alt="+"></a><br>
+		<a href="javascript://" onclick="updateCart(0,1856); return false"><img src="minus.gif" alt="-"></a>
+	</div>
+	
+	<span class="prices"><%= line_item.total_price %>р</span>
+</td>
 </tr>
+<% end %>

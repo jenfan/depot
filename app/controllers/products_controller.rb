@@ -1,15 +1,34 @@
 class ProductsController < ApplicationController
+  before_action :category
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.paginate page: params[:page], order: 'title',
+    per_page: params[:per_page] || 12
+
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    render template: 'products/index'
+  end
+
+  def show_category
+    category_id = @category.find_by_url_name(params[:category]).id
+    @category_name = Category.find_by_url_name(params[:category]).name
+    @products =  Product.where(category_id: category_id).paginate(page: params[:page], order: 'title', per_page: 9)
+    render template: 'products/index'
+  end
+
+  def show_subcategory
+    subcategory_id = @subcategory.find_by_url_name(params[:subcategory]).id
+    @subcategory_name = Subcategory.find_by_url_name(params[:subcategory]).name
+    @category_name = Category.find_by_url_name(params[:category]).name
+    @products =  Product.where(subcategory_id: subcategory_id).paginate(page: params[:page], order: 'title', per_page: 9)
+    render template: 'products/index'
   end
 
   # GET /products/new
@@ -63,9 +82,16 @@ class ProductsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
+
+    def category
+      @category = Category.all
+      @subcategory = Subcategory.all
     end
+
+    def set_product
+      category_id = @category.find_by_url_name(params[:id]).id
+      @products =  Product.where(category_id: category_id).paginate(page: params[:page], order: 'title', per_page: 9)
+     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params

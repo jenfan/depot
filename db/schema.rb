@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224163922) do
+ActiveRecord::Schema.define(version: 20140317131032) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "url_name"
   end
 
   create_table "line_items", force: true do |t|
@@ -36,18 +43,37 @@ ActiveRecord::Schema.define(version: 20140224163922) do
   end
 
   create_table "products", force: true do |t|
+    t.decimal  "articul"
     t.string   "title"
+    t.string   "proizvoditel"
+    t.decimal  "price",                 precision: 8, scale: 2
+    t.decimal  "price_discount",        precision: 8, scale: 2
+    t.decimal  "price_second",          precision: 8, scale: 2
+    t.decimal  "price_second_discount", precision: 8, scale: 2
+    t.decimal  "kol_v_upakovke",        precision: 8, scale: 0
+    t.string   "category"
+    t.string   "subcategory"
+    t.decimal  "discount"
+    t.boolean  "hit"
+    t.boolean  "is_show"
+    t.decimal  "vsego"
+    t.decimal  "reserv"
+    t.decimal  "svobod_ostatok"
+    t.boolean  "is_new"
     t.text     "description"
     t.string   "image_url"
-    t.decimal  "price",       precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
+    t.integer  "subcategory_id"
   end
 
-  create_table "taxonomies", force: true do |t|
+  create_table "subcategories", force: true do |t|
+    t.integer  "category_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url_name"
   end
 
   create_table "users", force: true do |t|

@@ -2,6 +2,6 @@
 
  <%= will_paginate(@products) %>
 	<div id="store">
-	 <%= render @products %>
+	 <%= render :partial => "products/product", :collection => @products %>
 	</div>
 <%= will_paginate(@products) %>
