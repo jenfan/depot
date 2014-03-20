@@ -1,3 +1,4 @@
+# coding: utf-8
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -5,10 +6,10 @@
 #
 #   cities = City.create!([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create!(name: 'Emanuel', city: cities.first)
-Product.delete_all
+# Product.delete_all
 
-Product.create!( title: 'Маркер перманентный, красный, круглый пиш. узел 1',
-			    price: "15.14",
+Product.create!(title: 'Маркер перманентный, красный, круглый пиш. узел 1',
+			    price: 15.14,
 			    category: 'Прочее',
 			    subcategory: 'Прочие товары',
 			    category_id: 1)
