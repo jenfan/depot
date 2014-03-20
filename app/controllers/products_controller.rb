@@ -1,33 +1,16 @@
 class ProductsController < ApplicationController
   before_action :category
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:index, :show, :edit, :update, :destroy]
   
   # GET /products
   # GET /products.json
   def index
-    @products = Product.paginate page: params[:page], order: 'title',
-    per_page: params[:per_page] || 12
 
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-    render template: 'products/index'
-  end
-
-  def show_category
-    category_id = @category.find_by_url_name(params[:category]).id
-    @category_name = @category.find_by_url_name(params[:category]).name
-    @products =  Product.where(category_id: category_id).paginate(page: params[:page], order: 'title', per_page: 9)
-    render template: 'products/index'
-  end
-
-  def show_subcategory
-    subcategory_id = @subcategory.find_by_url_name(params[:subcategory]).id
-    @subcategory_name = @subcategory.find_by_url_name(params[:subcategory]).name
-    @category_name = @category.find_by_url_name(params[:category]).name
-    @products =  Product.where(subcategory_id: subcategory_id).paginate(page: params[:page], order: 'title', per_page: 9)
     render template: 'products/index'
   end
 
@@ -89,8 +72,18 @@ class ProductsController < ApplicationController
     end
 
     def set_product
-      category_id = @category.find_by_url_name(params[:id]).id
-      @products =  Product.where(category_id: category_id).paginate(page: params[:page], order: 'title', per_page: 9)
+      if params[:category]!=nil 
+      @category_name = @category.find_by_url_name(params[:category]).name
+      category_id = @category.find_by_url_name(params[:category]).id
+      @products = Product.where(category_id: category_id).search(params[:page])
+        if params[:subcategory]!=nil
+        @subcategory_name = @subcategory.find_by_url_name(params[:subcategory]).name
+        subcategory_id = @subcategory.find_by_url_name(params[:subcategory]).id
+        @products =  Product.where(subcategory_id: subcategory_id).search(params[:page])
+        end
+      else 
+        @products=Product.search params[:page]
+      end
      end
 
     # Never trust parameters from the scary internet, only allow the white list through.

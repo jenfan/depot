@@ -3,7 +3,11 @@ class Product < ActiveRecord::Base
 	belongs_to :subcategory
 
 	# scope :category (where category)
-	
+	def self.search(page)
+	  Product.paginate :per_page => 9, :page => page,
+	           # :conditions => ['name like ?', "%#{search}%"],
+	           :order => 'title'
+	end
 	
 
 	#validates :title, :description, :image_url, presence: true

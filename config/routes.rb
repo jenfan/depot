@@ -4,7 +4,7 @@ Demo::Application.routes.draw do
   root to: 'store#index', as: 'store' # ...
 
   resources :carts
-  get "/products/:category", to: 'products#show_category', as: 'category'
+  get "/products/:category", to: 'products#show', as: 'category'
   resources :products
   resources :users
   resources :sessions , only: [:new, :create, :destroy]
@@ -16,7 +16,7 @@ Demo::Application.routes.draw do
   get "store/index"
 
   
-  get "/products/:category/:subcategory", to: 'products#show_subcategory', as: 'subcategory'
+  get "/products/:category/:subcategory", to: 'products#show', as: 'subcategory'
   get "/products/:category/:subcategory/:id", to: 'products#show', as: 'show_by_id'
 
   resources :line_items do
