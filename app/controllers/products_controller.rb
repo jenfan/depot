@@ -72,8 +72,10 @@ class ProductsController < ApplicationController
     end
 
     def set_product
+      @cart = current_cart
       if params[:category]!=nil 
       @category_name = @category.find_by_url_name(params[:category]).name
+      
       category_id = @category.find_by_url_name(params[:category]).id
       @products = Product.where(category_id: category_id).search(params[:page])
         if params[:subcategory]!=nil

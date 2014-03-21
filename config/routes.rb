@@ -1,7 +1,7 @@
 Demo::Application.routes.draw do
   resources :orders
 
-  root to: 'store#index', as: 'store' # ...
+  root to: 'products#index', as: 'store' # ...
 
   resources :carts
   get "/products/:category", to: 'products#show', as: 'category'

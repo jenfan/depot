@@ -26,6 +26,10 @@
 		padding: 0 0px;
 	}
 }
+.footer {
+	clear: both;
+	overflow: hidden;
+}
 #notice {
 	color: #000 !important;
 	border: 2px solid red;
@@ -35,19 +39,22 @@
 	font: bold smaller sans-serif;
 }
 
-#columns {
-	
 	#main {
-		margin-left: 19em;
+		margin-left: 200px;
 		padding: 1em;
 		background: white;
+		overflow: hidden;
 
 	}
 	#side {
-    float: left;
-    padding: 1em 2em;
-    width: 15em;
-    background: #141;
+	overflow: hidden;
+	background:#ccc; 
+	float:left; 
+	height:500px;
+	bottom: 0px;
+	text-align: center;
+    padding-top: 20px;
+    width: 195px;
     form,div {
     	display: inline;
     }
@@ -76,7 +83,6 @@
         border-top: 1px dotted #595;
         border-bottom: 1px dotted #595;
         margin-bottom: 10px;
-}
+		}
 	}
 	}
-}

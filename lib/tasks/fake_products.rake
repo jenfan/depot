@@ -1,19 +1,30 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
-    Product.create!(title: "Example Product",
-                 description: "Пластиковый корпус",
-                 image_url: "example.jpg",
-                 price: '5')
-    50.times do |n|
+    Category.create!(
+                 name: "Санки",
+                 url_name: 'Sanki')
+    6.times do |n|
       title  = Faker::Name.name
-      description = "example-#{n+1}@railstutorial.org"
-      image_url = "example.jpg"
-      price = '5.5'
+      url_name = ""
+      Product.create!(name: name,
+                   url_name: url_name,)
+                   
+    end
+  end
+    Product.create!(title: "Example Product",
+                 price: '5',
+                 category_id: '1',
+                 subcategory_id: '3')
+    5.times do |n|
+      title  = Faker::Name.name
+      price = 1..500
+      category_id = 1..7
+      subcategory_id = 1..7
       Product.create!(title: title,
-                   description: description,
-                   image_url: image_url,
-                   price: price)
+                   price: price,
+                   category_id: category_id,
+                   subcategory_id: subcategory_id)
     end
   end
 end

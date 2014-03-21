@@ -80,7 +80,7 @@ top: 0;}.top_cart { position: fixed; z-index: 20; right: 14%; width: 40%; min-wi
 .cart_list td.cart_temp_buttons img { vertical-align: middle }
 
 .cart_list td.del { padding-left: 20px; }
-.cart_list td.del a { display: block; width: 12px; height: 13px; background: url("../images/cart_delete.gif"); }
+.cart_list td.del a { display: block; width: 12px; height: 13px; background: url("cart_delete.gif"); }
 .cart_list td.del a:hover { background-position: 0 -13px; }
 
 .cart_list tr.last td { padding-top: 10px; }

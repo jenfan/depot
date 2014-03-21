@@ -1,15 +1,15 @@
  <h1>
  	<%= link_to "Все продукты", products_path %>
  	<% if params[:category] %>
- 	> <%= link_to @category_name, category_path %>
+ 	→ <%= link_to @category_name, category_path %>
  	<% end %>
  	<% if params[:subcategory] %>
- 		> <%= link_to @subcategory_name, subcategory_path %>
+	→ <%= link_to @subcategory_name, subcategory_path %>
  	<% end %>
  </h1>
 
- <%= will_paginate @products %>
+<%= will_paginate @products, next_label: "След →", previous_label: "← Пред" %>
     <div id="store">
-     <%= render :partial => "products/product", :collection => @products %>
+     <%= render :partial => "products/product", collection: @products %>
     </div>
-<%= will_paginate @products%>
+<%= will_paginate @products, next_label: "След →", previous_label: "← Пред" %>

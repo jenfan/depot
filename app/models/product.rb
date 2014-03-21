@@ -1,6 +1,8 @@
 class Product < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :subcategory
+	has_many :line_items
+	before_destroy :ensure_not_referenced_by_any_line_item
 
 	# scope :category (where category)
 	def self.search(page)
@@ -19,8 +21,7 @@ class Product < ActiveRecord::Base
 	    # URL должен указывать на изображение формата GIF, JPG или PNG
 	#}
 
-	has_many :line_items
-	before_destroy :ensure_not_referenced_by_any_line_item
+	
 	#...
 	private
 	# убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар

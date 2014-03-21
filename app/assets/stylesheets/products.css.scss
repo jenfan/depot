@@ -6,32 +6,33 @@
   #store {
     display: block;
     overflow: hidden;
+
   }
   h1 {
     margin: 0;
-    padding-bottom: 0.5em;
+    margin-bottom: 0.1em;
     font: 150% sans-serif;
     color: #226;
     border-bottom: 3px dotted #77d;
     }
     /* Запись в каталоге store */
     .one_product {
+      width: 33%;
+      min-width: 226px;
+      height: 302px;
       background-color: white;
-      border: 1px solid #b0b1b2;
-      padding: 25px 10px 10px 10px;
+      text-align: center;
+      border: 1px dotted #b0b1b2;
+      padding: 0;
       position: relative;
       float: left;
-      width: 25%;
-      margin: 0 2% 30px 3%;
-      height: 253px;
-        overflow: hidden;
+      margin: 0 0 0 0;
+      overflow: hidden;
       min-height: 100px;
 
         img {
-            width: 80px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            position: absolute;
+            clear: both;
+            
       }
       p, div.price_line {
         margin-top: 0.5em;

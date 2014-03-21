@@ -25,8 +25,9 @@ class Cart < ActiveRecord::Base
 			current_item.quantity-=1
 			current_item.save
 		else
+			current_item.quantity=0
         	current_item.destroy
         end
-        current_item
+        current_item || id
 	end
 end
