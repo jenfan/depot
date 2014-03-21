@@ -1,19 +1,19 @@
 
-
      <div class="one_product">
+        <% if (1..100).to_a.shuffle.first > 70 %>
         <div id="best_seller" style="padding:0; position:absolute; z-index:3;width=50px" align="left">
             <%= image_tag ("ribbon_best_seller.png"), size: "50x65" %>
         </div>
+        <% end %>
          <%= image_tag (product.image_url), size: "200x200" %><BR>
-         <%= link_to product.title, products_path %>
-         <p><%=  %> id=<%= product.id %></p>
-
+         <%= link_to "#{product.title} (#{product.id})", products_path %>
+         
          <% if product.subcategory %> 
-         <h6>Kатегория"<%= product.category.name %>"</h6>
+         <br><small>Kатегория"<%= product.category.name %>"</small><br>
          <% end %>
 
          <% if product.subcategory %> 
-         <h6>Подкатегория"<%= product.subcategory.name %>"</h6>
+         <small>Подкатегория"<%= product.subcategory.name %>"</small><br>
          <% end %>
 
          <%= sanitize(product.description) %>
