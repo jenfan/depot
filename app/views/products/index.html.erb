@@ -1,10 +1,10 @@
  <h1>
  	<%= link_to "Все продукты", products_path %>
  	<% if params[:category] %>
- 	→ <%= link_to @category_name, category_path %>
+ 	→ <%= link_to @current_category.name, category_path %>
  	<% end %>
  	<% if params[:subcategory] %>
-	→ <%= link_to @subcategory_name, subcategory_path %>
+	→ <%= link_to @current_subcategory.name, subcategory_path %>
  	<% end %>
  </h1>
 

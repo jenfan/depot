@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    
 
   end
 
@@ -74,14 +75,11 @@ class ProductsController < ApplicationController
     def set_product
       @cart = current_cart
       if params[:category]!=nil 
-      @category_name = @category.find_by_url_name(params[:category]).name
-      
-      category_id = @category.find_by_url_name(params[:category]).id
-      @products = Product.where(category_id: category_id).search(params[:page])
+      @current_category = @category.find_by_url_name(params[:category])
+      @products = @current_category.product.search(params[:page])
         if params[:subcategory]!=nil
-        @subcategory_name = @subcategory.find_by_url_name(params[:subcategory]).name
-        subcategory_id = @subcategory.find_by_url_name(params[:subcategory]).id
-        @products =  Product.where(subcategory_id: subcategory_id).search(params[:page])
+        @current_subcategory = @subcategory.find_by_url_name(params[:subcategory])
+        @products =  @current_subcategory.product.search(params[:page])
         end
       else 
         @products=Product.search params[:page]
