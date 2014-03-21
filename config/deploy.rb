@@ -12,8 +12,8 @@ lock '3.1.0'
 #
 # Если вы используете другую систему управления зависимостями,
 # закомментируйте эту строку.
-require 'bundler/capistrano'
-
+require 'rvm/capistrano' # Для работы rvm
+require 'bundler/capistrano' # необходимо для работы бандлера на рабочем сервере
 ## Чтобы не хранить database.yml в системе контроля версий, поместите
 ## dayabase.yml в shared-каталог проекта на сервере и раскомментируйте
 ## следующие строки.
@@ -58,9 +58,9 @@ set :deploy_to,       "/home/#{user}/projects/#{application}"
 set :unicorn_conf,    "/etc/unicorn/#{application}.#{login}.rb"
 set :unicorn_pid,     "/var/run/unicorn/#{application}.#{login}.pid"
 set :bundle_dir,      File.join(fetch(:shared_path), 'gems')
-role :web,            deploy_server
-role :app,            deploy_server
-role :db,             deploy_server, :primary => true
+role :web,            neon.locum.ru
+role :app,            neon.locum.ru
+role :db,             neon.locum.ru, :primary => true
 
 # Следующие строки необходимы, т.к. ваш проект использует rvm.
 set :rvm_ruby_string, "2.1.0"

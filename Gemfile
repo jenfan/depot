@@ -5,13 +5,15 @@ gem 'rails', '4.0.2'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '2.3.2.0'
-gem 'capistrano'
+gem "capistrano", "~> 2.15.0"
 gem 'unicorn'
+gem "rvm-capistrano"
 
 group :development do
 	gem 'sqlite3'
 	gem 'faker', '1.1.2'
 	gem 'rails_layout'
+	gem 'capistrano-unicorn', :require => false
 end
 
 group :assets do

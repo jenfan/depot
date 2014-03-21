@@ -19,7 +19,10 @@ test:
   timeout: 5000
 
 production:
-  adapter: postgresql
-  database: db/production_pg
+  adapter: mysql2
+  host: mysql2.locum.ru
+  username: jenfan_depot54
+  password: 0DYR8VpCT
+  database: jenfan_depot54
   pool: 5
   timeout: 5000
