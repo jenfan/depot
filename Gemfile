@@ -11,7 +11,7 @@ gem 'capistrano', '>= 3.0'
 group :development do
 	gem 'sqlite3'
 	gem 'faker', '1.1.2'
-	gem 'rails_layout'
+	# gem 'rails_layout'
 	gem 'capistrano-rails', require: false
   	gem 'capistrano-bundler', require: false
   	gem 'capistrano-rvm', require: false
@@ -27,7 +27,7 @@ end
 
 group :production do
   # gem 'pg', '0.17.1'
-  gem 'mysql'
+  # gem 'mysql'
   gem 'rails_12factor', '0.0.2'
   gem "activerecord-postgresql-adapter"
 end

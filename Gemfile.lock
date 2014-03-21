@@ -71,7 +71,6 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.9.0)
-    mysql (2.9.1)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.8.0)
@@ -91,7 +90,6 @@ GEM
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_layout (1.0.11)
     rails_serve_static_assets (0.0.2)
     rails_stdout_logging (0.0.3)
     railties (4.0.2)
@@ -159,10 +157,8 @@ DEPENDENCIES
   faker (= 1.1.2)
   jbuilder (~> 1.2)
   jquery-rails (~> 2.3.0)
-  mysql
   rails (= 4.0.2)
   rails_12factor (= 0.0.2)
-  rails_layout
   sass-rails (~> 4.0.0)
   sdoc
   smarter_csv
