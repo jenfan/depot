@@ -43,10 +43,13 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    @product = Product.find(params[:id])
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { head :no_content }
+        # format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        flash[:success] = "Successfully updated..."
+        format.html { redirect_to action: :products, controller: :admin }
+        # format.json { head :no_content }
       else
         format.html { render action: 'edit' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -76,10 +79,10 @@ class ProductsController < ApplicationController
       @cart = current_cart
       if params[:category]!=nil 
       @current_category = @category.find_by_url_name(params[:category])
-      @products = @current_category.product.search(params[:page])
+      @products = @current_category.products.search(params[:page])
         if params[:subcategory]!=nil
         @current_subcategory = @subcategory.find_by_url_name(params[:subcategory])
-        @products =  @current_subcategory.product.search(params[:page])
+        @products =  @current_subcategory.products.search(params[:page])
         end
       else 
         @products=Product.search params[:page]
@@ -88,6 +91,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :image_url, :price)
+      params.require(:product).permit(:title, :description, :image_url, :price, :category_id, :subcategory_id)
     end
 end

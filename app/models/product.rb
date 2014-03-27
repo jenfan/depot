@@ -4,7 +4,20 @@ class Product < ActiveRecord::Base
 	has_many :line_items
 	before_destroy :ensure_not_referenced_by_any_line_item
 
-	# scope :category (where category)
+	def self.category
+	  Category.find(category_id)
+	end
+
+	# accepts_nested_attributes_for :subcategory
+	# accepts_nested_attributes_for :subcategory, :allow_destroy => true, :reject_if => :all_blank
+	# SUBCATEGORY_TYPES = Subcategory.all.to_a
+	CATEGORY_TYPES = Category.all.map { |city| [city.name, city.id] }
+	SUBCATEGORY_TYPES = Subcategory.all
+	def c_subcategory
+		Subategory.all
+	end
+
+	# scope :subcategory (where category)
 	def self.search(page)
 	  Product.paginate :per_page => 9, :page => page,
 	           # :conditions => ['name like ?', "%#{search}%"],

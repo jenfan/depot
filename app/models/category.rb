@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
 	has_many :subcategories, dependent: :destroy
-	has_many :product
+	has_many :products
 
 	
 end

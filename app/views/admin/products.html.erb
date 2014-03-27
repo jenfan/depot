@@ -1,0 +1,13 @@
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>img</th>
+		<th>category</th>
+		<th>subcategory</th>
+		<th>description</th>
+		<th>price</th>
+		<th>save</th>
+	</tr>
+	<%= render partial: 'admin/view/prod', collection: @products, as: :product  %>
+</table>

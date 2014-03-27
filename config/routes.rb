@@ -9,7 +9,13 @@ Demo::Application.routes.draw do
   resources :users
   resources :sessions , only: [:new, :create, :destroy]
 
-  #get 'admin' => 'admin#index'
+  get 'admin', to: 'admin#index'
+  match 'admin/products', to: 'admin#products', via: 'get'
+  match 'admin/category', to: 'admin#category', via: 'get'
+  match 'admin/category', to: 'admin#category_update', via: 'PATCH'
+  match 'admin/subcategory', to: 'admin#subcategory', via: 'get'
+  match 'admin/subcategory', to: 'admin#subcategory_update', via: 'PATCH'
+
   match '/signout', to: 'sessions#destroy', via: 'delete'
   get '/signin', to: 'sessions#new'
   get '/signup', to: 'users#new'
