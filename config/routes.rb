@@ -1,4 +1,6 @@
 Demo::Application.routes.draw do
+  resources :menus
+
   resources :orders
 
   root to: 'products#index', as: 'store' # ...
@@ -20,8 +22,8 @@ Demo::Application.routes.draw do
   get '/signup', to: 'users#new'
   get "store/index"
 
-  get "/category/:category", to: 'products#index', as: 'category'
-  get "/category/:category/:subcategory", to: 'products#index', as: 'subcategory'
+  get "/:menu/:category", to: 'products#index', as: 'category'
+  get "/:menu/:category/:subcategory", to: 'products#index', as: 'subcategory'
   get "/products/:id", to: 'products#show', as: 'product'
 resources :products
   resources :line_items do

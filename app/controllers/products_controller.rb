@@ -74,6 +74,7 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def category
+      @menu = Menu.all
       @category = Category.all
       @subcategory = Subcategory.all
     end
@@ -90,7 +91,7 @@ class ProductsController < ApplicationController
             end
           else
             @product = Product.find(params[:category])
-            render 'show'
+            redirect_to product_path(@product) if @product
           end
         end
     end

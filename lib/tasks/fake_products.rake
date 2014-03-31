@@ -10,7 +10,7 @@ namespace :db do
       Product.create!(name: name,
                    url_name: url_name,)
                    
-    end
+    
   end
     Product.create!(title: "Example Product",
                  price: '5',
