@@ -16,6 +16,14 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
+    <%= f.label :category_id %><br>
+    <%= f.select :category_id, @category.map { |cat| [cat.name, cat.id]}, prompt: '...' %>
+  </div>
+  <div class="field">
+    <%= f.label :subcategory_id %><br>
+    <%= f.select :subcategory_id, @subcategories, prompt: '...' %>
+  </div>
+  <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description, rows: 6 %>
   </div>

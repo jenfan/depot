@@ -1,18 +1,19 @@
 class ProductsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   before_action :category
   before_action :set_product, only: [:index, :show, :edit, :update, :destroy]
   
   # GET /products
   # GET /products.json
-  def index
-    
 
+  def index
+    @products ||= Product.search params[:page]
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-    render template: 'products/index'
+    @product = Product.find(params[:id])
   end
 
   # GET /products/new
@@ -22,6 +23,8 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    @product = Product.find(params[:id])
+    @subcategories = @product.category.subcategories.map { |cat| [cat.name, cat.id]}
   end
 
   # POST /products
@@ -77,20 +80,29 @@ class ProductsController < ApplicationController
 
     def set_product
       @cart = current_cart
-      if params[:category]!=nil 
-      @current_category = @category.find_by_url_name(params[:category])
-      @products = @current_category.products.search(params[:page])
-        if params[:subcategory]!=nil
-        @current_subcategory = @subcategory.find_by_url_name(params[:subcategory])
-        @products =  @current_subcategory.products.search(params[:page])
+        if params[:category]
+          @current_category = @category.find_by_url_name(params[:category])
+          if @current_category
+            @products = @current_category.products.search(params[:page]) 
+            @current_subcategory = @subcategory.find_by_url_name(params[:subcategory])
+            if @current_subcategory
+              @products =  @current_subcategory.products.search(params[:page]) 
+            end
+          else
+            @product = Product.find(params[:category])
+            render 'show'
+          end
         end
-      else 
-        @products=Product.search params[:page]
-      end
-     end
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:title, :description, :image_url, :price, :category_id, :subcategory_id)
     end
+
+    def record_not_found
+      # flash.now[:notice] = "Товар или категория товаров не найдены"  
+      redirect_to action: 'index'
+    end
+
 end

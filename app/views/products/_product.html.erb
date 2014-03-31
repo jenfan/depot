@@ -6,7 +6,7 @@
         </div>
         <% end %>
          <%= image_tag (product.image_url), size: "200x200" %><BR>
-         <%= link_to "#{product.title} (#{product.id})", products_path %>
+         <%= link_to "#{product.title} (#{product.id})", product_path(product) %>
          
          <% if product.subcategory %> 
          <br><small>Kатегория"<%= product.category.name %>"</small><br>

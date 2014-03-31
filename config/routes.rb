@@ -4,8 +4,7 @@ Demo::Application.routes.draw do
   root to: 'products#index', as: 'store' # ...
 
   resources :carts
-  get "/products/:category", to: 'products#show', as: 'category'
-  resources :products
+  
   resources :users
   resources :sessions , only: [:new, :create, :destroy]
 
@@ -21,10 +20,10 @@ Demo::Application.routes.draw do
   get '/signup', to: 'users#new'
   get "store/index"
 
-  
-  get "/products/:category/:subcategory", to: 'products#show', as: 'subcategory'
-  get "/products/:category/:subcategory/:id", to: 'products#show', as: 'show_by_id'
-
+  get "/category/:category", to: 'products#index', as: 'category'
+  get "/category/:category/:subcategory", to: 'products#index', as: 'subcategory'
+  get "/products/:id", to: 'products#show', as: 'product'
+resources :products
   resources :line_items do
     member do
       get 'remove_item'
