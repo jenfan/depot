@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   before_action :category, :set_cart
-  before_action :set_product, only: [:index, :show, :edit, :update, :destroy]
+  
   
   # GET /products
   # GET /products.json
@@ -104,19 +104,14 @@ class ProductsController < ApplicationController
       @cart = current_cart  
     end
 
-    def set_product
-          @product = Product.find(params[:category])
-          redirect_to product_path(@product) if @product
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+ # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:title, :description, :image_url, :price, :category_id, :subcategory_id)
     end
 
     def record_not_found
       # flash.now[:notice] = "Товар или категория товаров не найдены"  
-      redirect_to action: 'index'
+      # redirect_to action: 'index'
     end
 
 end
