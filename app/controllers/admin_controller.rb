@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
 	layout 'admin/index'
+  # skip_before_filter :verify_authenticity_token, :only => [:index, :show, :category, :category_update]
 	# before_action :authenticate, only:
 
   def index
@@ -13,6 +14,7 @@ class AdminController < ApplicationController
 
   def category
   	@category = Category.all
+    @menu = Menu.all.map { |m| [m.name, m.id] }
   end
 
   def category_update
@@ -21,6 +23,7 @@ class AdminController < ApplicationController
       if @category.update(category_params)
         flash[:success] = "Successfully updated..."
         format.html { redirect_to action: :category }
+        format.js { @current_item = @category }
         # format.json { head :no_content }
       else
         format.html { render text: "error" }
@@ -39,7 +42,7 @@ class AdminController < ApplicationController
       if @subcategory.update(subcategory_params)
         flash[:success] = "Successfully updated..."
         format.html { redirect_to action: :subcategory }
-        # format.json { head :no_content }
+        format.js { @current_item = @subcategory }
       else
         format.html { render text: "error" }
       end
@@ -48,7 +51,7 @@ class AdminController < ApplicationController
 
   private
     def category_params
-      params.require(:category).permit(:id, :name, :title, :url_name)
+      params.require(:category).permit(:id, :menu_id, :name, :title, :url_name)
     end
     def subcategory_params
       params.require(:subcategory).permit(:id, :name, :title, :url_name)      

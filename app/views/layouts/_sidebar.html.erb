@@ -1,3 +1,6 @@
-расширенный поиск
-
-
+<ul class="nav nav-tabs nav-stacked">
+	<% if @current_menu %>
+		<%= render @current_menu.categories %>
+	 	
+	<% end %>
+</ul>

@@ -96,16 +96,6 @@ top: 0;}.top_cart { position: fixed; z-index: 20; right: 14%; width: 40%; min-wi
 .top_cart .cart_items .buttons { margin: 0; text-align: right; margin-top: 10px; }
 .cart_list .count a {border-bottom: medium none !important;}
 
-/*updated*/
-.top_menu { font-size: 11px; overflow: hidden; padding-left: 5px; background: #000 url(/images/new_header_menu.png) left top repeat-x; }
-.top_menu-ny { font-size: 11px; overflow: hidden; padding-left: 5px; background: url(http://delikateska.ru/images/top_menu_bg_ny.gif) left top repeat-x; }
-.top_menu ul { margin: 0; padding: 0; overflow: hidden; }
-.top_menu li { float: left; list-style-type: none; }
-.top_menu li a { color: #cbcbcb; display: block; padding: 9px 7px 7px; text-decoration: none; }
-.top_menu li a:hover { color: #fff !important; background: url(/images/new_top_menu_a.png) left top repeat-x #d24c49; text-decoration: underline; }
-.top_menu li a.active { color: #ba1916 !important; text-shadow: none !important; background: url(http://delikateska.ru/images/menu_active_bg.gif) left top repeat-x #FEFEFE; text-decoration: none; }
-
-
 .button_red1 { text-transform: lowercase; font-size: 18px; color: white; font-family: 'DGRoslynGothicNormal'; background: url(/images/button_gray.gif) left center repeat-x #80807F; text-decoration: none;
 	display: inline-block;
 	border: 1px #80807F solid;

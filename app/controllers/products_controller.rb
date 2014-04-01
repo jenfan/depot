@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-  before_action :category
+  before_action :category, :set_cart
   before_action :set_product, only: [:index, :show, :edit, :update, :destroy]
   
   # GET /products
@@ -8,6 +8,24 @@ class ProductsController < ApplicationController
 
   def index
     @products ||= Product.search params[:page]
+  end
+
+  def index_menu
+    @current_menu = Menu.find_by_permalink([params[:menu]])
+    @products = @current_menu.products.search(params[:page]) 
+    @categories = @current_menu.categories
+    @products ||= Product.search params[:page]
+    render action: :index
+  end
+
+  def index_category
+    @products = @current_category.products.search(params[:page]) 
+    render action: :index
+  end
+
+  def index_subcategory
+    @products =  @current_subcategory.products.search(params[:page]) 
+    render action: :index
   end
 
   # GET /products/1
@@ -77,23 +95,18 @@ class ProductsController < ApplicationController
       @menu = Menu.all
       @category = Category.all
       @subcategory = Subcategory.all
+      @current_menu = Menu.find_by_permalink([params[:menu]]) if params[:menu]
+      @current_category = @category.find_by_url_name(params[:category]) if params[:category]
+      @current_subcategory = @subcategory.find_by_url_name(params[:subcategory]) if params[:subcategory]
+    end
+
+    def set_cart
+      @cart = current_cart  
     end
 
     def set_product
-      @cart = current_cart
-        if params[:category]
-          @current_category = @category.find_by_url_name(params[:category])
-          if @current_category
-            @products = @current_category.products.search(params[:page]) 
-            @current_subcategory = @subcategory.find_by_url_name(params[:subcategory])
-            if @current_subcategory
-              @products =  @current_subcategory.products.search(params[:page]) 
-            end
-          else
-            @product = Product.find(params[:category])
-            redirect_to product_path(@product) if @product
-          end
-        end
+          @product = Product.find(params[:category])
+          redirect_to product_path(@product) if @product
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

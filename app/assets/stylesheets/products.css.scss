@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .products {
+  .breadcrumb {
+    li.active > a {
+      color: #999999 !important; }
+    }
   #store {
     display: block;
     overflow: hidden;

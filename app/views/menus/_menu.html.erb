@@ -1,18 +1,11 @@
-<li class="dropdown <%= 'active' if category.url_name == params[:category] %> ">
-
-	<a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" 
-	data-target="/category/<%= category.url_name %>" href="/category/<%= category.url_name %>">
-		<%= category.name %>
-				<!--Выпадающий список-->
-				<% if category.subcategories.empty? %>
-				</a>
-                <% else %>
-                <b class="caret"></b></a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <%= render @subcategory, 
-                    category_id: category.id, category_url: category.url_name
-                    %>
-                </ul>
-                <% end %>
-                <!--.Выпадающий список-->
-</li>
+  <li class="dropdown active">
+    <a class="dropdown-toggle"
+       data-toggle=""
+       href="<%= menu_path(menu.permalink) %>">
+        <%= menu.name %>
+        <b class="caret"></b>
+      </a>
+    <ul class="dropdown-menu">
+      <%= render menu.categories %>
+    </ul>
+  </li>

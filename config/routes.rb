@@ -1,14 +1,8 @@
 Demo::Application.routes.draw do
-  resources :menus
-
-  resources :orders
-
-  root to: 'products#index', as: 'store' # ...
-
-  resources :carts
-  
-  resources :users
+  root to: 'products#index', as: 'store'
+  resources :orders, :carts, :users
   resources :sessions , only: [:new, :create, :destroy]
+
 
   get 'admin', to: 'admin#index'
   match 'admin/products', to: 'admin#products', via: 'get'
@@ -22,17 +16,18 @@ Demo::Application.routes.draw do
   get '/signup', to: 'users#new'
   get "store/index"
 
-  get "/:menu/:category", to: 'products#index', as: 'category'
-  get "/:menu/:category/:subcategory", to: 'products#index', as: 'subcategory'
+  get "/:menu/:category", to: 'products#index_category', as: 'category'
+  get "/:menu/:category/:subcategory", to: 'products#index_subcategory', as: 'subcategory'
   get "/products/:id", to: 'products#show', as: 'product'
-resources :products
-  resources :line_items do
-    member do
-      get 'remove_item'
-    end
-  end
+  get "/:menu", to: 'products#index_menu', as: 'menu'
   
-
+  resources :menus
+  resources :products
+    resources :line_items do
+      member do
+        get 'remove_item'
+      end
+    end
   
 
   # The priority is based upon order of creation: first created -> highest priority.
