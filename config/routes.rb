@@ -16,9 +16,9 @@ Demo::Application.routes.draw do
   get '/signup', to: 'users#new'
   get "store/index"
 
+  get "/products/:id", to: 'products#show', as: 'product'
   get "/:menu/:category", to: 'products#index_category', as: 'category'
   get "/:menu/:category/:subcategory", to: 'products#index_subcategory', as: 'subcategory'
-  get "/products/:id", to: 'products#show', as: 'product'
   get "/:menu", to: 'products#index_menu', as: 'menu'
   
   resources :menus

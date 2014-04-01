@@ -1,21 +1,9 @@
-<ul class="breadcrumb">
-	<% if @current_menu %>
- 	<li><%= link_to @current_menu.name , menu_path(@current_menu.permalink) %>
- 		<span class="divider">/</span></li>
- 	<% end %>
- 	<% if @current_category %>
- 	<li><%= link_to @current_category.name , category_path(@current_menu.permalink,@current_category.url_name) %>
- 		<span class="divider">/</span></li>
- 	<% end %>
- 	<% if @current_subcategory %>
-	<li class="active">
-		<%= link_to @current_subcategory.name,subcategory_path(@current_menu.permalink,@current_category.url_name,@current_subcategory.url_name) %>
-		<span class="divider">/</span></li>
- 	<% end %>
-</ul>
-
-<%= will_paginate @products, next_label: "След →", previous_label: "← Пред" %>
-    <div id="store">
-     <%= render :partial => "products/product", collection: @products %>
-    </div>
-<%= will_paginate @products, next_label: "След →", previous_label: "← Пред" %>
+<% if !@products.empty? %>
+	<%= will_paginate @products, next_label: "След →", previous_label: "← Пред" %>
+	    <div id="store">
+	     <%= render @products %>
+	    </div>
+	<%= will_paginate @products, next_label: "След →", previous_label: "← Пред" %>
+<% else %>
+<p>По данному запросу товаров не найдено.</p>
+<% end %>

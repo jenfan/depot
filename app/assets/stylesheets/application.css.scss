@@ -12,6 +12,14 @@
  *= require_tree .
  */
  @import "bootstrap";
+ .nav-tabs-top > li > a {
+ 	background-color: #2F97DA;
+ 	color: #fff;
+ 	&:hover {
+ 		background-color: #1F87CA;
+ 	}
+ }
+
  .dropdown:hover > .dropdown-menu
                 {
                     display: block;
