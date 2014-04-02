@@ -12,7 +12,7 @@
          <br><small>Kатегория"<%= product.category.name %>"</small><br>
          <% end %>
 
-         <% if product.subcategory %> 
+         <% if !product.subcategory.nil? %> 
          <small>Подкатегория"<%= product.subcategory.name %>"</small><br>
          <% end %>
 

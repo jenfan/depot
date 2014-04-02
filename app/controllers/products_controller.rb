@@ -11,9 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def index_menu
-    @current_menu = Menu.find_by_permalink([params[:menu]])
-    @products = @current_menu.products.search(params[:page]) 
-    @categories = @current_menu.categories
+    @products = @current_menu.products.search(params[:page]) if @current_menu
     @products ||= Product.search params[:page]
     render action: :index
   end
@@ -92,7 +90,7 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def category
-      @menu = Menu.all
+      @menu = Menu.includes(:categories).includes(:subcategories).all
       @category = Category.all
       @subcategory = Subcategory.all
       @current_menu = Menu.find_by_permalink([params[:menu]]) if params[:menu]
@@ -111,7 +109,7 @@ class ProductsController < ApplicationController
 
     def record_not_found
       # flash.now[:notice] = "Товар или категория товаров не найдены"  
-      # redirect_to action: 'index'
+      redirect_to action: 'index'
     end
 
 end

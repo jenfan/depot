@@ -12,14 +12,41 @@
  *= require_tree .
  */
  @import "bootstrap";
- .nav-tabs-top > li > a {
+ .nav-tabs-top > li > a, .nav-tabs-top > .active > a:hover {
  	background-color: #2F97DA;
+ 	/*background-color: #56A8DC;*/
  	color: #fff;
  	&:hover {
- 		background-color: #1F87CA;
+ 		/*background-color: #1F87CA;*/
+ 		background-color:#0081c2 !important;
+ 		color: #fff
  	}
  }
 
+.nav-tabs-side > .dropdown > a {
+	&:hover {
+		background-color:#0081c2 !important;
+		color: #fff
+	}
+}
+
+.nav-tabs-side > .active > a {
+	background-color: #eee;
+	&:hover {
+		background-color:#0081c2 !important;
+	}
+}
+
+/*это подменющка для верхнего меню*/
+.dropdown-menu {
+ 	margin-top: -3px;
+ 	border-radius: 2px;
+ }
+ /*это для бокового*/
+.dropdown-submenu > .dropdown-menu {
+	margin-top: 0px;
+	border-radius: 2px;
+ }
  .dropdown:hover > .dropdown-menu
                 {
                     display: block;
@@ -66,7 +93,7 @@
 
 #main {
 	margin-left: 200px;
-	padding: 1em;
+	padding: 0 1em;
 	background: white;
 	overflow: hidden;
 
@@ -74,7 +101,7 @@
 #side {
 float:left; 
 text-align: center;
-padding-top: 20px;
+/*padding-top: 20px;*/
 width: 195px;
 margin-bottom: 10px;
 }

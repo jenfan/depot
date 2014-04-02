@@ -9,7 +9,7 @@
  		<span class="divider">/</span></li>
  	<% end %>
  	<% if @current_category %>
- 	<li><%= link_to @current_category.name , category_path(@current_menu.permalink,@current_category.url_name) %>
+ 	<li class="<%= "active" if !@current_subcategory %>" ><%= link_to @current_category.name , category_path(@current_menu.permalink,@current_category.url_name) %>
  		<span class="divider">/</span></li>
  	<% end %>
  	<% if @current_subcategory %>

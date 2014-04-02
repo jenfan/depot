@@ -1,10 +1,11 @@
-<li class="dropdown <%= "dropdown-submenu" if !category.subcategories.empty? %>">
-    <%= link_to category.name, category_path(category.menu.permalink,category.url_name) %>
+<li class="dropdown <%= 'active ' if category.url_name == params[:category] %><%= "dropdown-submenu" if !category.subcategories.empty? %>">
+    <%= link_to category.name, category_path(menu_permalink,category.url_name) %>
     <% if category.subcategories.empty? %>
         <li>
     <% else %>
         <ul class="dropdown-menu">
-            <%= render category.subcategories, menu_url: category.menu.permalink, category_url: category.url_name  %>
+            <%= render category.subcategories, menu_url: category.menu.permalink, 
+            category_url: category.url_name, subcategory_category_url_name: category.url_name  %>
         </ul>
     </li>
     <% end %>

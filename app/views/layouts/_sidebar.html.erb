@@ -1,6 +1,5 @@
-<ul class="nav nav-tabs nav-stacked">
+<ul class="nav nav-tabs nav-tabs-side nav-stacked">
 	<% if @current_menu %>
-		<%= render @current_menu.categories %>
-	 	
+		<%= render @current_menu.categories, menu_permalink: @current_menu.permalink %>
 	<% end %>
 </ul>
