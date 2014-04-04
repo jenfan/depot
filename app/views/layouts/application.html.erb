@@ -11,12 +11,14 @@
 	<%= render 'layouts/header' %>
     <%= render @cart %>
     <div>
-	    <div id="side">
-			<%= render 'layouts/sidebar' %>
-		</div>
+    	<%= render partial: 'layouts/breadcrumb' %>
+
+	    <!-- div sidebar -->
+			<%= render 'layouts/sidebar' if !(action_name == 'show') %>
+		
 		<div id="main">
 			<%= render 'layouts/messages' %>
-			<%= render partial: 'layouts/breadcrumb' %>
+			
 			<%= yield %>
 		</div>
 	</div>

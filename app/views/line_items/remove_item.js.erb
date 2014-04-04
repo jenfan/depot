@@ -1,5 +1,5 @@
 <% if @current_item.quantity != 0  %>
-$('#line_item<%= @current_item.id %>').html("<%=j render @current_item, template: 'line_item', locals: {notr: 'yes'} %>"); 
+$('#line_item<%= @current_item.id %>').html("<%=j render @current_item, template: 'line_item', notr: 'yes' %>"); 
 <% else %>
 $('#line_item<%= @current_item.id %>').html(""); 
 <% end %>

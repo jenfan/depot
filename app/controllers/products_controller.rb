@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
 
   def index_menu
     @products = @current_menu.products.search(params[:page]) if @current_menu
-    @products ||= Product.search params[:page]
+    # @products ||= Product.search params[:page]
     render action: :index
   end
 
@@ -22,7 +22,11 @@ class ProductsController < ApplicationController
   end
 
   def index_subcategory
-    @products =  @current_subcategory.products.search(params[:page]) 
+    if @current_subcategory.nil?
+      redirect_to action: 'index' 
+      return
+    end
+    @products =  @current_subcategory.products.search(params[:page])
     render action: :index
   end
 
@@ -93,7 +97,8 @@ class ProductsController < ApplicationController
       @menu = Menu.includes(:categories).includes(:subcategories).all
       @category = Category.all
       @subcategory = Subcategory.all
-      @current_menu = Menu.find_by_permalink([params[:menu]]) if params[:menu]
+      @current_menu = Menu.includes(:categories).find_by_permalink([params[:menu]]) if params[:menu]
+      redirect_to action: 'index' if @current_menu.nil? and params[:menu]
       @current_category = @category.find_by_url_name(params[:category]) if params[:category]
       @current_subcategory = @subcategory.find_by_url_name(params[:subcategory]) if params[:subcategory]
     end
