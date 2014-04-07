@@ -12,6 +12,32 @@
  *= require_tree .
  */
  @import "bootstrap";
+
+#store {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    padding-left: 20px;
+
+  }
+ .border {
+ 	margin: 5px;
+ 	padding: 10px 10px;
+ 	background-color: #fff; 
+	border-radius: 6px;
+	box-shadow: 0 0 3px 0 rgba(0,0,0,.25);
+	h3 {
+		margin: 0;
+	}
+ }
+
+ .center {
+ 	text-align: center;
+ }
+ .left {
+ 	text-align: left;
+ }
+
  .nav-tabs-top > li > a, .nav-tabs-top > .active > a:hover {
  	background-color: #2F97DA;
  	/*background-color: #56A8DC;*/
@@ -22,7 +48,25 @@
  		color: #fff
  	}
  }
+.container {
+	/*min-width: 1000px;*/
+	padding: 0;
 
+}
+.breadcrumb {
+	/*padding: 0;*/
+	margin: 15px 0;
+}
+.pagination {
+	margin: 0;
+	clear: left;
+}
+.nav {
+	padding-left: 40px;
+}
+.nav-tabs-side {
+	padding: 0 !important;
+}
 .nav-tabs-side > .dropdown > a {
 	&:hover {
 		background-color:#0081c2 !important;
@@ -92,7 +136,9 @@
 }
 
 #main {
-	margin-left: 200px;
+	/*margin-left: 200px;*/
+	vertical-align: bottom;
+	min-height: 300px;
 	padding: 0 1em;
 	background: white;
 	overflow: hidden;

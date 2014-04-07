@@ -1,12 +1,17 @@
-<table width="100%">
-	<tr height="100">
-		<td width="33%">Картинка</td>
-		<td width="23%">Название</td>
-		<td width="15%">Регситрация Вход</td>
-		<td>(495) 276-66-77</td>
-		
-	</tr>
-</table>
+
+<div class="row">
+	<ul class="nav nav-tabs">
+		<li><%= link_to 'О нас', about_path %></li>
+		<li><%= link_to 'Бонус', bonus_path %></li>
+		<li><%= link_to 'Контакт', contact_path %></li>
+		<li><%= link_to 'Помощь', help_path %></li>
+		<li><%= link_to 'Задать вопрос', vopros_path %></li>
+		<li><%= link_to 'Регистрация', "#" %></li>
+		<li><%= link_to 'Вход', '#' %></li>
+	</ul>
+</div>
+
+<br><BR><BR><BR>
 <div class="container">
         <hr class="bs-docs-separator">
         <!--Выпадающее меню-->

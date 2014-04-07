@@ -3,34 +3,31 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .products {
-  .breadcrumb {
-    li.active > a {
-      color: #999999 !important; }
-    }
-  #store {
-    display: block;
-    overflow: hidden;
-
+  h6 {
+    margin: 10px 0 -10px 0;
   }
-  h1 {
-    margin: 0;
-    margin-bottom: 0.1em;
-    font: 150% sans-serif;
-    color: #226;
-    border-bottom: 3px dotted #77d;
+  
+  .breadcrumb {
+    li.active > a { color: #999999 !important; }
     }
-    /* Запись в каталоге store */
+  
+    .description {
+      height: 150px;
+    }
     .one_product {
-      width: 33%;
-      min-width: 226px;
-      height: 302px;
+      @media screen and (min-width: 480px) {
+      width: 44%; }
+      @media screen and (min-width: 1000px) {
+      width: 30%; }
+      @media screen and (min-width: 1160px) {
+      width: 23%; }
+      height: 362px;
       background-color: white;
       text-align: center;
-      border: 1px dotted #b0b1b2;
-      padding: 0;
+      padding: 5px;
       position: relative;
       float: left;
-      margin: 0 0 0 0;
+      margin: 2px 10px 10px 5px;
       overflow: hidden;
       min-height: 100px;
 
@@ -41,6 +38,7 @@
       p, div.price_line {
         margin-top: 0.5em;
         margin-bottom: 0.8em;
+        text-align: center;
         form, div {
                 display: inline;
             }
@@ -52,15 +50,21 @@
             margin-bottom: 2px;
             color: #227;
         }
-        p, div.price_line {
-            margin-top: 0.5em;
-            margin-bottom: 0.8em;
-    }
+
     .price {
-            color: #44a;
+            color: #F58220;
+            font-size: 18px;
             font-weight: bold;
-            margin-right: 3em;
+            float: left;
+            margin-left: 50px;
+            text-align: center;
     }
 
   }
+  .title_item {
+      font-size: 13px; 
+      display: block;
+      height: 38px; 
+      font-weight: bold; 
+    }
 }

@@ -11,10 +11,10 @@
 	<%= render 'layouts/header' %>
     <%= render @cart %>
     <div>
-    	<%= render partial: 'layouts/breadcrumb' %>
+    	<%= render partial: 'layouts/breadcrumb' if @current_menu %>
 
 	    <!-- div sidebar -->
-			<%= render 'layouts/sidebar' if !(action_name == 'show') %>
+			<%= render 'layouts/sidebar' if !(action_name == 'show' or controller.controller_name == 'static_pages') %>
 		
 		<div id="main">
 			<%= render 'layouts/messages' %>

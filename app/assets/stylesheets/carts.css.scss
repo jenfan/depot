@@ -18,13 +18,7 @@
 	}
 }
 
-.top_cart {position: fixed;
-z-index: 20;
-right: 14%;
-width: 40%;
-min-width: 500px;
-max-width: 600px;
-top: 0;}.top_cart { position: fixed; z-index: 20; right: 14%; width: 40%; min-width: 500px; max-width: 600px; top: 0; }
+.top_cart { position: fixed; z-index: 20; right: 4%; width: 40%; min-width: 500px; max-width: 600px; top: 0; }
 .top_cart .cart_title { position: absolute; right: 0; top: 100%; text-align: center; float: right; cursor: pointer; margin-right: 18px; font-family: "DGRoslynGothicNormal", Tahoma; color: #bb2825; font-size: 12px; vertical-align: middle; } /*updated*/
 .top_cart .cart_title span { font-family: "Myriad Pro",Tahoma; float: right; color: black; font-size: 13px; }
 .top_cart .cart_title  .opened { display: block; background: #fff; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; box-shadow: 0 2px 2px #404040; border: solid 1px #b9b9b9; border-top: 0; }

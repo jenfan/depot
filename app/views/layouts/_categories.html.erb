@@ -1,7 +1,7 @@
 <% if params[:menu] && params[:category].blank? %>
 	<li class="dropdown active">
 		<%= link_to "#{params["menu"]}/#{category.url_name}" do %>
-		<%= category.name %> <span class="badge pull-right"><%= category.products.size %></span>
+		<%= category.name %> <span class=badge pull-right><%= category.products.size %></span>
 		<% end %>
 	</li>
 <% end %>

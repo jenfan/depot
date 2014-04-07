@@ -3,7 +3,7 @@
      <%= form_for product do |f| %>
         
         <td><%= product.id %></td>
-        <td><%= f.label :title %><br /><%= f.text_field :title, size: 40 %></td>
+        <td><%= f.label :title %><br /><%= f.text_field :title, size: 20 %></td>
         <td><%= image_tag (product.image_url), size: "200x200" %></td>
          
          
@@ -15,7 +15,7 @@
                 <%= f.select :subcategory_id, Product::SUBCATEGORY_TYPES.where(category_id: product.category_id).map { |city| [city.name, city.id] },
                     prompt: '...' %>
          </td>
-         
+         <td><%= f.label :description %><%= f.text_field :description, size: 20 %></td>
 
         <td><%= sanitize(product.description) %></td>
         <td><%= product.price %></td>

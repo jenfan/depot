@@ -95,12 +95,13 @@ class ProductsController < ApplicationController
 
     def category
       @menu = Menu.includes(:categories).includes(:subcategories).all
-      @category = Category.all
-      @subcategory = Subcategory.all
       @current_menu = Menu.includes(:categories).find_by_permalink([params[:menu]]) if params[:menu]
-      redirect_to action: 'index' if @current_menu.nil? and params[:menu]
-      @current_category = @category.find_by_url_name(params[:category]) if params[:category]
-      @current_subcategory = @subcategory.find_by_url_name(params[:subcategory]) if params[:subcategory]
+      if @current_menu.nil? and params[:menu]
+        redirect_to action: 'index'
+        return
+      end
+      @current_category = @current_menu.categories.find_by_url_name(params[:category]) if params[:category]
+      @current_subcategory = @current_category.subcategories.find_by_url_name(params[:subcategory]) if params[:subcategory]
     end
 
     def set_cart

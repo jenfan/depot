@@ -1,5 +1,12 @@
 Demo::Application.routes.draw do
   root to: 'products#index', as: 'store'
+  get '/about', to: 'static_pages#about', as: 'about'
+  get '/bonus', to: 'static_pages#bonus', as: 'bonus'
+  get '/contact', to: 'static_pages#contact', as: 'contact'
+  get '/help', to: 'static_pages#help', as: 'help'
+  get '/vopros', to: 'static_pages#vopros', as: 'vopros'
+
+
   resources :orders, :carts, :users
   resources :sessions , only: [:new, :create, :destroy]
   get "/products/:id", to: 'products#show', as: 'product'
