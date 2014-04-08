@@ -80,6 +80,7 @@ class AdminController < ApplicationController
 
   def subcategory
     @subcategory = Subcategory.all
+    @categories = Category.all
   end
 
   def subcategory_update
@@ -108,8 +109,6 @@ class AdminController < ApplicationController
     def subcategory_params
       params.require(:subcategory).permit(:id, :name, :title, :url_name)      
     end
-    def option_params
-      params.require(:subcategory).permit(:id, :name, :title, :url_name)      
-    end
+    
   
 end
