@@ -7,6 +7,11 @@
           выбор варианта продукта
        <h6>Цена:</h6> 
         <h2><%= @product.price %>p</h2>
+              <% @option_values.each do |n| %>
+              <%= fields_for n do |o| %>
+              <%= n.title %>  <%= o.text_field :quantity, size: 1 %><br>
+      <% end end %>
+
         <%= button_to 'Add to Cart', line_items_path(product_id: @product), remote: true, class: "btn btn-primary" %> 
     </div>
      

@@ -1,26 +1,33 @@
-<% @category = Product::CATEGORY_TYPES %>
+<% @option_values = product.option_values %>
 <tr>
      <%= form_for product do |f| %>
         
         <td><%= product.id %></td>
         <td><%= f.label :title %><br /><%= f.text_field :title, size: 20 %></td>
+        <td>
+                <% @option_values.each do |n| %>
+                   <%= fields_for n, n.id do |o| %>
+                    <%= n.id %><%= n.title %><%= o.text_field :quantity, size: 2 %><br>
+                <% end end %>
+
+
+
+        </td>
         <td><%= image_tag (product.image_url), size: "200x200" %></td>
-         
-         
-         <td>
-                <%= f.select :category_id, @category,
+        <td>
+                <%= f.select :category_id, @categories,
                     prompt: '...' %>
-         </td>
-         <td>
-                <%= f.select :subcategory_id, Product::SUBCATEGORY_TYPES.where(category_id: product.category_id).map { |city| [city.name, city.id] },
+         
+                <%= f.select :subcategory_id, @subcategories.where(id: product.subcategory_id).map { |n| [n.name, n.id] },
                     prompt: '...' %>
          </td>
          <td><%= f.label :description %><%= f.text_field :description, size: 20 %></td>
-
-        <td><%= sanitize(product.description) %></td>
         <td><%= product.price %></td>
-        <td><%= f.submit "save product" %></td>
+        <td><%= f.submit "save",  class:"btn btn-primary" %>
+        <%= f.submit "x",  class:"btn btn-danger" %></td>
          
      <% end %>
 </tr>
    
+<% #f.select :option_values, @option_values,
+    #                prompt: '...' %>

@@ -17,10 +17,16 @@ Demo::Application.routes.draw do
       end
     end
 
+
   get 'admin', to: 'admin#index'
   match 'admin/products', to: 'admin#products', via: 'get'
+  match 'admin/product_option_value', to: 'admin#add_product_option', via: 'PATCH', as: 'add_product_option'
   match 'admin/category', to: 'admin#category', via: 'get'
   match 'admin/category', to: 'admin#category_update', via: 'PATCH'
+  match 'admin/option_type',        to: 'admin#option_type', via: 'get'
+  match 'admin/option_type_update', to: 'admin#option_type_update', via: 'PATCH'
+  match 'admin/option_value',       to: 'admin#option_value', via: 'get'
+  match 'admin/option_value_update',to: 'admin#option_value_update', via: 'PATCH'
   match 'admin/subcategory', to: 'admin#subcategory', via: 'get'
   match 'admin/subcategory', to: 'admin#subcategory_update', via: 'PATCH'
 

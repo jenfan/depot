@@ -34,6 +34,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+    @option_values = Product.find(1).option_values
   end
 
   # GET /products/new
@@ -71,6 +72,7 @@ class ProductsController < ApplicationController
       if @product.update(product_params)
         # format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         flash[:success] = "Successfully updated..."
+        flash[:notice]  = params
         format.html { redirect_to action: :products, controller: :admin }
         # format.json { head :no_content }
       else
@@ -111,6 +113,9 @@ class ProductsController < ApplicationController
  # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:title, :description, :image_url, :price, :category_id, :subcategory_id)
+    end
+    def option_params
+      params.require(:subcategory).permit(:id, :name, :title, :url_name)      
     end
 
     def record_not_found

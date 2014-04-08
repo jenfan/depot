@@ -1,0 +1,20 @@
+<tr>
+     <%= form_for option_type, url: {action: "option_type_update"} do |f| %>
+        
+        <td>
+            <%= f.label :id %><br /><%= f.text_field :id, size: 40 %>
+        </td>
+        <td>
+            <%= f.label :name %><br /><%= f.text_field :name, size: 40 %>
+        </td>
+        <td>
+            <%= f.label :title %><br /><%= f.text_field :title, size: 40 %>
+        </td>
+        <td>
+            <%= f.submit "save",  class:"btn btn-primary" %>
+            <%= f.submit "x",  class:"btn btn-danger" %>
+        </td>
+         
+     <% end %>
+</tr>
+   

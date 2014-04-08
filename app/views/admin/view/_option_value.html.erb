@@ -1,0 +1,23 @@
+<tr>
+     <%= form_for option_value, url: {action: "option_value_update"} do |f| %>
+        
+        <td>
+            <%= f.label :id %><br /><%= f.text_field :id, size: 40 %>
+        </td>
+        <td>
+            <%= f.select :option_type_id, OptionType.all.map { |city| [city.name, city.id] }, prompt: '...' %>
+        </td>
+        <td>
+            <%= f.label :name %><br /><%= f.text_field :name, size: 40 %>
+        </td>
+        <td>
+            <%= f.label :title %><br /><%= f.text_field :title, size: 40 %>
+        </td>
+        <td>
+            <%= f.submit "save",  class:"btn btn-primary" %>
+            <%= f.submit "x",  class:"btn btn-danger" %>
+        </td>
+         
+     <% end %>
+</tr>
+   

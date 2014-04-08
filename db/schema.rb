@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331224835) do
+ActiveRecord::Schema.define(version: 20140407130340) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -41,6 +41,23 @@ ActiveRecord::Schema.define(version: 20140331224835) do
     t.datetime "updated_at"
   end
 
+  create_table "option_types", force: true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "option_values", force: true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.integer  "option_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "option_values", ["option_type_id"], name: "index_option_values_on_option_type_id"
+
   create_table "orders", force: true do |t|
     t.string   "name"
     t.text     "address"
@@ -49,6 +66,17 @@ ActiveRecord::Schema.define(version: 20140331224835) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "product_option_values", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "option_value_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "product_option_values", ["option_value_id"], name: "index_product_option_values_on_option_value_id"
+  add_index "product_option_values", ["product_id"], name: "index_product_option_values_on_product_id"
 
   create_table "products", force: true do |t|
     t.decimal  "articul"

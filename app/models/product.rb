@@ -2,28 +2,30 @@ class Product < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :subcategory
 	has_many :line_items
+	has_many :product_option_values
+	has_many :option_values, through: :product_option_values
 	before_destroy :ensure_not_referenced_by_any_line_item
 
-	def self.category
-	  Category.find(category_id)
-	end
-
-	# accepts_nested_attributes_for :subcategory
-	# accepts_nested_attributes_for :subcategory, :allow_destroy => true, :reject_if => :all_blank
-	# SUBCATEGORY_TYPES = Subcategory.all.to_a
-	CATEGORY_TYPES = Category.all.map { |city| [city.name, city.id] }
-	SUBCATEGORY_TYPES = Subcategory.all
-	def c_subcategory
-		Subategory.all
-	end
-
+	
+	
 	# scope :subcategory (where category)
-	def self.search(page)
-	  Product.paginate :per_page => 9, :page => page,
+	def self.search(page,number=9,order='title')
+	  paginate :per_page => number, :page => page,
 	           # :conditions => ['name like ?', "%#{search}%"],
-	           :order => 'title'
+	           :order => order
 	end
 	
+	def add_product_option(product_id,value_id)
+		current_product = Product.find(product_id)
+		option = current_product.product_option_values.where(product_id:product_id, option_value_id: value_id)
+
+		if option
+			option.quantity+=1
+		else
+			option.build
+        end
+        option
+	end
 
 	#validates :title, :description, :image_url, presence: true
     #validates :price, numericality: {greater_than_or_equal_to: 0.01}
