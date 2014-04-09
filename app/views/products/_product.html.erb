@@ -1,13 +1,13 @@
 
      <div class="one_product border">
         <% if (1..100).to_a.shuffle.first > 70 %>
-        <div id="best_seller" style="padding:0; position:absolute; z-index:3;width=50px" align="left">
+        <div id="best_seller">
             <%= image_tag ("ribbon_best_seller.png"), size: "50x65" %>
         </div>
         <% end %>
         <%= link_to "#{product.title} (#{product.id})", product_path(product), class: "title_item" %>
          <%= image_tag (product.image_url), size: "170x170" %><BR>
-         
+         <%= link_to 'Предварительный просмотр', product_path(product), remote: true %>
          <div class="price_line">
                 <p class="price"><%= product.price %> р</p>
              <%= button_to "В корзину", line_items_path(product_id: product), remote: true, class: "btn btn-sm btn-primary"  %>
@@ -23,5 +23,3 @@
              <% end %>
          </div>
      </div>
-
-   

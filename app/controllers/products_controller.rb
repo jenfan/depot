@@ -35,6 +35,10 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @option_values = Product.find(1).option_values
+    respond_to do |format|
+        format.html {}
+        format.js { product = @product }
+    end
   end
 
   # GET /products/new
@@ -45,6 +49,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @categories = Category.all
     @subcategories = @product.category.subcategories.map { |cat| [cat.name, cat.id]}
   end
 
