@@ -3,9 +3,12 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-	$('.windowClose').click ->
+	$('.predv_close').click ->
 	  $('#predv_prosmotr').hide(100)
+	  $('#overlay').hide(100)
 	$('#overlay').click ->
 		$('#predv_prosmotr').hide(100)
 		$('#overlay').hide(100)
+	$('#addone').click ->
+		$('#option_value_quantity').value = 2
 	

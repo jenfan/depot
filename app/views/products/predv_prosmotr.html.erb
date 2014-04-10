@@ -1,4 +1,4 @@
-<h2 class="page-header"><%= @product.title %></h2>
+<h2><%= @product.title %></h2>
 <!-- основная часть продукта -->
 <div class="row">
   <div class="col-md-8 center">  <%= image_tag @product.image_url %></div>
@@ -9,6 +9,7 @@
         <h2><%= @product.price %>p</h2>
               <% @option_values.each do |n| %>
               <%= fields_for n do |o| %>
+              <input type="button" value="+" name="1" id="addone">
               <%= n.title %>  <%= o.text_field :quantity, size: 1 %><br>
       <% end end %>
 

@@ -5,10 +5,12 @@
         <td><%= product.id %></td>
         <td><%= f.label :title %><br /><%= f.text_field :title, size: 20 %></td>
         <td>
-                <% @option_values.each do |n| %>
-                   <%= fields_for n, n.id do |o| %>
-                    <%= n.id %><%= n.title %><%= o.text_field :quantity, size: 2 %><br>
-                <% end end %>
+            <% for option in product.option_values %>
+                <%= fields_for "product[option_values][]", option do |o| %>
+                    <%= option.title %> : <%= o.text_field :quantity, size: 2 %><br>
+            <% end end %>
+
+                
 
 
 
@@ -17,7 +19,7 @@
         <td>
                 <%= f.select :category_id, @categories,
                     prompt: '...' %>
-         
+         <br>
                 <%= f.select :subcategory_id, @subcategories.where(id: product.subcategory_id).map { |n| [n.name, n.id] },
                     prompt: '...' %>
          </td>
@@ -28,6 +30,3 @@
          
      <% end %>
 </tr>
-   
-<% #f.select :option_values, @option_values,
-    #                prompt: '...' %>
