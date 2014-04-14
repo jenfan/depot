@@ -1,0 +1,45 @@
+<div class="top_cart" id="top_cart" style="" >
+	<div class="cart_items" >
+		<div id="cart_items" class="cart_wrap">
+					<h3>Корзина</h3>
+					<div class="cart_scroller">
+						<table cellpadding="0" cellspacing="0" class="cart_list">
+							<tbody>
+										<%= render cart.line_items %>
+						</tbody></table>
+					</div>
+					<span class="s"></span>
+					<table cellpadding="0" cellspacing="0" class="cart_list">
+						<tbody><tr class="last">
+							<td class="del"><p style="width: 13px"></p></td>
+							<td class="photo"><p style="width: 60px"></p></td>
+							<td colspan="1" class="title t_title" style="width: 100%">
+								<h2>Итого</h2>
+								<!-- a href="javascript://" onclick="clearCart(); return false" class="button_gray"><span>отменить</span></a -->
+							</td>
+							<td class="price" style="text-align: right">
+								<h2>
+									<%= cart.total_price unless cart.nil? %> р
+									<br>
+								</h2>
+							</td>
+							<td>
+								<%= button_to "Оформить", new_order_path, method: :get %>
+								<%= button_to 'Очистить корзину', cart,  method: :delete, data: { confirm: 'Are you sure?' }%>
+							</td>
+						</tr>
+					</tbody></table>
+				</div>
+	</div>
+	<div id="cart_title" class="cart_title" onclick="cart();">
+		<div class="opened"><p class="cart_counts">Итого: <small><%= cart.total_price %>р</small></p>
+				<h3><small class="filled"><%= cart.total_quantity %></small> Корзина</h3>
+		</div>
+		<div class="closed">
+			<span>^</span>свернуть
+
+
+
+			</div>
+	</div>
+</div>

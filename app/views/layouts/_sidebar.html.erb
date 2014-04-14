@@ -1,0 +1,26 @@
+<div id="side">
+	<% if @interests %>
+		<ul class="nav nav-tabs nav-tabs-side nav-stacked">
+			<div class="pull-left">Интересы</div><br>
+				<li class="dropdown active">
+					<%= form_for :interest do |f| %>
+					 <%= f.select :id, @interests,
+                    prompt: '...' %>
+                    <% end %>
+				</li>
+		</ul>
+		<br>
+	<% end %>
+	<% if params[:subcategory].nil? %>
+	 	<ul class="nav nav-tabs nav-tabs-side nav-stacked">
+			 <% if params[:menu] && params[:category].blank? %>
+				<div class="pull-left">Категории</div><br>
+				<%= render partial: 'layouts/categories', collection: @current_menu.categories, as: :category %>
+			<% end %>
+			<% if params[:category] && @current_category.subcategories.present? %>
+				<div class="pull-left">Категории</div><br>
+				<%= render partial: 'layouts/categories', collection: @current_category.subcategories, as: :category %>
+			<% end %>
+		</ul>
+	<% end %>
+</div>

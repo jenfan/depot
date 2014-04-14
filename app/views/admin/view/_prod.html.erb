@@ -1,0 +1,30 @@
+<% @option_values = product.option_values %>
+<tr>
+     <%= form_for product do |f| %>
+        
+        <td><%= product.id %></td>
+        <td><%= f.label :title %><br /><%= f.text_field :title, size: 20 %></td>
+        <td>
+            
+
+
+        </td>
+        <td><%= image_tag (product.image_url), size: "200x200" %></td>
+        <td>
+                <%= f.select :category_id, @categories,
+                    prompt: '...' %>
+         <br>
+                <%= f.select :subcategory_id, @subcategories.where(id: product.subcategory_id).map { |n| [n.name, n.id] },
+                    prompt: '...' %>
+                    <br>интересы<Br>
+                <%= f.select :interest_id, @interests,
+                    prompt: '...' %>
+                    
+         </td>
+         <td><%= f.label :description %><%= f.text_field :description, size: 20 %></td>
+        <td><%= product.price %></td>
+        <td><%= f.submit "save",  class:"btn btn-primary" %>
+        <%= f.submit "x",  class:"btn btn-danger" %></td>
+         
+     <% end %>
+</tr>

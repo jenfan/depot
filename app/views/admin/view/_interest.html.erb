@@ -1,0 +1,14 @@
+<tr id="interest<%= interest.id %>">
+     <%= form_for interest, url: {action: "interest_update"} do |f| %>
+        
+        <td>
+            <%= f.label :id %><%= f.text_field :id, size: 3 %>
+        </td>
+        <td>
+            <%= f.label :name %><%= f.text_field :name, size: 40 %>
+        </td>
+        <td><%= f.submit "save",  class:"btn btn-primary" %>
+        <%= f.submit "x",  class:"btn btn-danger" %></td>
+         
+     <% end %>
+</tr>
