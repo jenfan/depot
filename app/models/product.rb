@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :subcategory
+	belongs_to :interest
 	has_many :line_items
 	has_many :product_option_values
 	has_many :option_values, through: :product_option_values
@@ -14,6 +15,7 @@ class Product < ActiveRecord::Base
 	           # :conditions => ['name like ?', "%#{search}%"],
 	           :order => order
 	end
+
 	
 	def add_product_option(product_id,value_id)
 		current_product = Product.find(product_id)

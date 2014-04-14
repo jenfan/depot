@@ -7,9 +7,11 @@ class AdminController < ApplicationController
   end
 
   def products
-  	@products = Product.includes(:category).includes(:subcategory).includes(:option_values).search(params[:page],9,'id')
+  	@products = Product.includes(:category).includes(:interest).includes(:subcategory).includes(:option_values).search(params[:page],9,'id')
     @categories = Category.all.map { |n| [n.name, n.id] }
     @subcategories = Subcategory.all
+    @interests = Interest.all.map { |n| [n.name, n.id] }
+    # @option_values = product.option_values
     logger.info(params[:product])
   	# @products = Product.all.search(params[:page])
   end
@@ -20,6 +22,23 @@ class AdminController < ApplicationController
 
   def add_product_option_value
     
+  end
+
+  def interest
+    @interests = Interest.all
+  end
+
+  def interest_create
+    @interest_new = Interest.new(interest_params)
+    @interest_new.save
+    @interests = Interest.all
+    render 'interest'
+  end
+
+  def interest_update
+    @interest = Interest.find(interest_params[:id])
+    flash[:success] = "Successfully updated..." if @interest.update(interest_params)
+    render 'interest'
   end
 
   def category
@@ -63,6 +82,10 @@ class AdminController < ApplicationController
     end
   end
 
+  def product_option_value
+    @product_option_values = Product.find(1).product_option_values
+  end
+
   def category_update
     @category = Category.find(category_params[:id])
     respond_to do |format|
@@ -99,6 +122,9 @@ class AdminController < ApplicationController
   private
     def category_params
       params.require(:category).permit(:id, :menu_id, :name, :title, :url_name)
+    end
+    def interest_params
+      params.require(:interest).permit(:id, :name)
     end
     def option_value_params
       params.require(:option_value).permit(:id, :name, :title, :option_type_id)

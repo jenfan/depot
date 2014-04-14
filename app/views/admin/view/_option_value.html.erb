@@ -2,7 +2,7 @@
      <%= form_for option_value, url: {action: "option_value_update"} do |f| %>
         
         <td>
-            <%= f.label :id %><br /><%= f.text_field :id, size: 40 %>
+            <%= f.label :id %><br /><%= f.text_field :id, size: 4 %>
         </td>
         <td>
             <%= f.select :option_type_id, OptionType.all.map { |city| [city.title, city.id] }, prompt: '...' %>

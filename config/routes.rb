@@ -20,6 +20,7 @@ Demo::Application.routes.draw do
 
   get 'admin', to: 'admin#index'
   match 'admin/products', to: 'admin#products', via: 'get'
+  match 'admin/product_option_value', to: 'admin#product_option_value', via: 'GET', as: 'product_option_value'
   match 'admin/product_option_value', to: 'admin#add_product_option', via: 'PATCH', as: 'add_product_option'
   match 'admin/category', to: 'admin#category', via: 'get'
   match 'admin/category', to: 'admin#category_update', via: 'PATCH'
@@ -29,6 +30,9 @@ Demo::Application.routes.draw do
   match 'admin/option_value_update',to: 'admin#option_value_update', via: 'PATCH'
   match 'admin/subcategory', to: 'admin#subcategory', via: 'get'
   match 'admin/subcategory', to: 'admin#subcategory_update', via: 'PATCH'
+  match 'admin/interest', to: 'admin#interest', via: 'GET'
+  match 'admin/interest', to: 'admin#interest_create', via: 'POST'
+  match 'admin/interest', to: 'admin#interest_update', via: 'PATCH'
 
   match '/signout', to: 'sessions#destroy', via: 'delete'
   get '/signin', to: 'sessions#new'

@@ -101,6 +101,7 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def category
+      @interests = Interest.all.map { |n| [n.name, n.id] }
       @menu = Menu.includes(:categories).includes(:subcategories).all
       @current_menu = Menu.includes(:categories).find_by_permalink([params[:menu]]) if params[:menu]
       if @current_menu.nil? and params[:menu]
@@ -117,7 +118,7 @@ class ProductsController < ApplicationController
 
  # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :image_url, :price, :category_id, :subcategory_id)
+      params.require(:product).permit(:title, :description, :image_url, :price, :interest_id, :category_id, :subcategory_id, option_values: [:id,:value])
     end
     def option_params
       params.require(:subcategory).permit(:id, :name, :title, :url_name)      

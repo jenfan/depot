@@ -2,7 +2,7 @@
      <%= form_for subcategory, url: {action: "subcategory_update"} do |f| %>
         
         <td>
-            <%= f.label :id %><br /><%= f.text_field :id, size: 40 %>
+            <%= f.label :id %><br /><%= f.text_field :id, size: 4 %>
         </td>
         <td>
             <%= f.select :category_id, @categories.map { |city| [city.name, city.id] }, prompt: '...' %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407130340) do
+ActiveRecord::Schema.define(version: 20140411105345) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 20140407130340) do
     t.datetime "updated_at"
     t.string   "url_name"
     t.integer  "menu_id"
+  end
+
+  create_table "interests", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "line_items", force: true do |t|
@@ -82,11 +88,11 @@ ActiveRecord::Schema.define(version: 20140407130340) do
     t.decimal  "articul"
     t.string   "title"
     t.string   "proizvoditel"
-    t.decimal  "price",                 precision: 8, scale: 2
-    t.decimal  "price_discount",        precision: 8, scale: 2
-    t.decimal  "price_second",          precision: 8, scale: 2
-    t.decimal  "price_second_discount", precision: 8, scale: 2
-    t.decimal  "kol_v_upakovke",        precision: 8, scale: 0
+    t.decimal  "price",                           precision: 8, scale: 2
+    t.decimal  "price_discount",                  precision: 8, scale: 2
+    t.decimal  "price_second",                    precision: 8, scale: 2
+    t.decimal  "price_second_discount",           precision: 8, scale: 2
+    t.integer  "kol_v_upakovke",        limit: 8
     t.string   "category"
     t.string   "subcategory"
     t.decimal  "discount"
@@ -103,7 +109,10 @@ ActiveRecord::Schema.define(version: 20140407130340) do
     t.integer  "category_id"
     t.integer  "subcategory_id"
     t.integer  "menu_id"
+    t.integer  "interest_id"
   end
+
+  add_index "products", ["interest_id"], name: "index_products_on_interest_id"
 
   create_table "subcategories", force: true do |t|
     t.integer  "category_id"

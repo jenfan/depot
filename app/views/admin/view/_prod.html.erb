@@ -5,13 +5,7 @@
         <td><%= product.id %></td>
         <td><%= f.label :title %><br /><%= f.text_field :title, size: 20 %></td>
         <td>
-            <% for option in product.option_values %>
-                <%= fields_for "product[option_values][]", option do |o| %>
-                    <%= option.title %> : <%= o.text_field :quantity, size: 2 %><br>
-            <% end end %>
-
-                
-
+            
 
 
         </td>
@@ -22,6 +16,10 @@
          <br>
                 <%= f.select :subcategory_id, @subcategories.where(id: product.subcategory_id).map { |n| [n.name, n.id] },
                     prompt: '...' %>
+                    <br>интересы<Br>
+                <%= f.select :interest_id, @interests,
+                    prompt: '...' %>
+                    
          </td>
          <td><%= f.label :description %><%= f.text_field :description, size: 20 %></td>
         <td><%= product.price %></td>
