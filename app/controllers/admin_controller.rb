@@ -6,6 +6,11 @@ class AdminController < ApplicationController
   def index
   end
 
+  def output
+    data = Product.first
+    render json: data
+  end
+
   def products
   	@products = Product.includes(:category).includes(:interest).includes(:subcategory).includes(:option_values).search(params[:page],9,'id')
     @categories = Category.all.map { |n| [n.name, n.id] }
