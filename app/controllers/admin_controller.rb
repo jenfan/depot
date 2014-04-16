@@ -4,15 +4,47 @@ class AdminController < ApplicationController
 	# before_action :authenticate, only:
 
   def index
+    #@products = Product.all
   end
 
   def output
-    data = Product.first
-    render json: data
+    a = params.keys
+    render json: params[params.keys[0]]
+
+
+
   end
 
   def products
-  	@products = Product.includes(:category).includes(:interest).includes(:subcategory).includes(:option_values).search(params[:page],9,'id')
+
+    @orderlink = params[:orderlink]
+    
+    if params[:orderlink]!=nil
+      search = params[:orderlink]
+      ans = Hash.new
+      data = Product.all
+      for i in 0..data.count-1
+        if data[i].title.scan(search)[0]!=nil
+           ans[data[i].id]=data[i].title
+        end
+      end 
+      @products = Product.where(id: ans.keys )
+    else
+      @products = Product.all
+    end
+
+  	
+    if params[:mycheck]!=nil
+      @str = 1
+      @bool = true
+    else
+      @str = 0
+      @bool = false
+    end
+    
+
+
+
     @categories = Category.all.map { |n| [n.name, n.id] }
     @subcategories = Subcategory.all
     @interests = Interest.all.map { |n| [n.name, n.id] }

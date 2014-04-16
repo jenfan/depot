@@ -1,17 +1,45 @@
-<%= debug params %>
-<table class="table">
-	<tr>
-		<th>ID</th>
-		<th>Title</th>
-		<th>Options</th>
-		<th>img</th>
-		<th>category</th>
-		<th>description</th>
-		<th>price</th>
-		<th>save</th>
-	</tr>
-	<%= page_entries_info @products %>
-		 <%= will_paginate @products, :container => "<div>", class: "col-md-4" %>
-	<%= render partial: 'admin/view/prod', collection: @products, as: :product  %>
+<div class="jumbotron">
+  <h2><b>Чудо-фильтр</b></h2>
+ 
+    <%= form_tag("/admin/products", method: "get") do %>
+	 	<div><%= check_box_tag 'mycheck', @str, @bool%> Image</div>
+    <div><%= check_box_tag 'id', @str, @bool%> ID</div>
+    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
+    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
+    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
+    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
+    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
+    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
+    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
+    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
+    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
+    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
+    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
+	 	<p><%= text_field_tag(:orderlink, @orderlink) %></p>
+		<p><%= submit_tag("Готово", id: "subbtn", class: "btn btn-primary btn-lg") %></p>
+	<% end %>
+</div>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+	<th>Articul</th>
+	<th>Title</th>
+	<% if @str==1 %>
+	<th>Image</th>
+	<% end %>
+  </tr>
+
+<% @products.each do |products| %>
+
+  <tr>
+    <td><%= products.id %></td>
+    <td><%= products.articul %></td>
+    <td><%= products.title %></td>
+    <% if @str==1 %>
+    <td><%= products.image_url %></td>
+    <% end %>
+  </tr>
+<% end %>
 </table>
 
