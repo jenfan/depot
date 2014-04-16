@@ -53,16 +53,7 @@ class AdminController < ApplicationController
     else
       @products = Product.all
     end
-
-  	
-    if params[:mycheck]!=nil
-      @str = 1
-      @bool = true
-    else
-      @str = 0
-      @bool = false
-    end
-
+    
     cols = Product.columns
     @buf = Hash.new
     file = File.read("settings.rb")
