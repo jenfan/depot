@@ -14,12 +14,13 @@
         <div class="col-xs-12 col-md-8" style="margin-top:10px;"><%= submit_tag("Готово", id: "subbtn", class: "btn btn-primary btn-sm") %></div>
 	<% end %>
 </div>
-
+<a id="mybtn" href= "jscript" class="btn btn-primary btn-sm" data-remote="true">hi</a>
+<p></p>
 <table border="1">
   <tr>
     <% for i in 0..@buf.count-1 %>
         <% if  @buf[i][:checked]=="1" %>    
-           <th onclick="$('#subbtn').click();"><%= @buf[i][:name]%></th>
+           <th><%= @buf[i][:name]%></th>
         <% end %>    
     <% end %>
   </tr>
@@ -29,7 +30,7 @@
   <tr>
     <% for i in 0..@buf.count-1 %>
         <% if  @buf[i][:checked]=="1" %> 
-            <td onclick="$('#subbtn').click();"><div id=""><%= products[@buf[i][:name]] %></div></td>
+            <td onclick="#$('#subbtn').click();"><div id="cell<%= products.id %><%= @buf[i][:name] %>"><%= products[@buf[i][:name]] %></div></td>
         <% end %>   
     <% end %>
   </tr>

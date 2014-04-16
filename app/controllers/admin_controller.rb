@@ -7,6 +7,10 @@ class AdminController < ApplicationController
     #@products = Product.all
   end
 
+  def jscript
+    #@products = Product.all
+  end
+
   def output
     a = params.keys
     #params[params.keys[0]]
@@ -31,13 +35,12 @@ class AdminController < ApplicationController
     art.store(j, :string => data[buf[0][:name]])
     j+=1
     end
-    render json: art
+    render json: data[0][buf[0][:name]]
     
 
   end
 
   def products
-
     @orderlink = params[:orderlink]
     
     if params[:orderlink]!=nil
