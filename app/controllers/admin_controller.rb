@@ -9,9 +9,30 @@ class AdminController < ApplicationController
 
   def output
     a = params.keys
-    render json: params[params.keys[0]]
-
-
+    #params[params.keys[0]]
+    cols = Product.columns
+    data = Product.all
+    buf = Hash.new
+    for i in 0..cols.count-1
+      buf.store(i, :name => cols[i].name, :checked => "0")
+    end 
+    puf=Hash.new
+    ff= File.new("settings.rb", "w")
+    ff.write(buf)
+    ff.close
+    file = File.read("settings.rb")
+    for i in 0..file.scan("name").count-1
+      puf.store(i, :name => file.scan(/(?:[a-z_])+/)[3*i+1], :checked => file.scan(/(?:[0-9])+/)[2*i+1])
+    end
+    art = Hash.new
+    @data = Product.all
+    j=0
+    @data.each do |data|
+    art.store(j, :string => data[buf[0][:name]])
+    j+=1
+    end
+    render json: art
+    
 
   end
 
@@ -41,7 +62,34 @@ class AdminController < ApplicationController
       @str = 0
       @bool = false
     end
+
+    cols = Product.columns
+    @buf = Hash.new
+    file = File.read("settings.rb")
+    for i in 0..file.scan("name").count-1
+      @buf.store(i, :name => file.scan(/(?:[a-z_])+/)[3*i+1], :checked => file.scan(/(?:[0-9])+/)[2*i+1])
+    end
+    if params.count > 2
+        for i in 0..cols.count-1
+        if params[@buf[i][:name]]=="1"
+          @buf.store(i, :name => cols[i].name, :checked => "1")
+        else
+          @buf.store(i, :name => cols[i].name, :checked => "0")
+        end  
+      end 
+      puf=Hash.new
+      f= File.new("settings.rb", "w")
+      f.write(@buf)
+      f.close
+    end  
+
     
+    
+    
+
+
+
+
 
 
 
