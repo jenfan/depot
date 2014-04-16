@@ -1,43 +1,36 @@
-<div class="jumbotron">
-  <h2><b>Чудо-фильтр</b></h2>
+<h2><b>Чудо-фильтр</b></h2>
+<div class="jumbotron" style="height:300px;">
+  
  
     <%= form_tag("/admin/products", method: "get") do %>
-	 	<div><%= check_box_tag 'mycheck', @str, @bool%> Image</div>
-    <div><%= check_box_tag 'id', @str, @bool%> ID</div>
-    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
-    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
-    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
-    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
-    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
-    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
-    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
-    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
-    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
-    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
-    <div><%= check_box_tag 'title', @str, @bool%> Название</div>
-	 	<p><%= text_field_tag(:orderlink, @orderlink) %></p>
-		<p><%= submit_tag("Готово", id: "subbtn", class: "btn btn-primary btn-lg") %></p>
+    	<% for i in 0..@buf.count-1 %>
+            <% if  @buf[i][:checked]=="0" %>	
+                <div class="col-xs-6 col-sm-3"><%= check_box_tag @buf[i][:name], "1", false%> <%= @buf[i][:name] %></div>
+            <% else %>
+                <div class="col-xs-6 col-sm-3"><%= check_box_tag @buf[i][:name], "1", true%> <%= @buf[i][:name] %></div>
+            <% end %>    
+        <% end %>    
+        <div class="col-xs-12 col-md-8" style="margin-top:20px;">Поиск: <%= text_field_tag(:orderlink, @orderlink) %></div>
+        <div class="col-xs-12 col-md-8" style="margin-top:10px;"><%= submit_tag("Готово", id: "subbtn", class: "btn btn-primary btn-sm") %></div>
 	<% end %>
 </div>
 
 <table border="1">
   <tr>
-    <th>ID</th>
-	<th>Articul</th>
-	<th>Title</th>
-	<% if @str==1 %>
-	<th>Image</th>
-	<% end %>
+    <% for i in 0..@buf.count-1 %>
+        <% if  @buf[i][:checked]=="1" %>    
+           <th onclick="$('#subbtn').click();"><%= @buf[i][:name]%></th>
+        <% end %>    
+    <% end %>
   </tr>
 
 <% @products.each do |products| %>
 
   <tr>
-    <td><%= products.id %></td>
-    <td><%= products.articul %></td>
-    <td><%= products.title %></td>
-    <% if @str==1 %>
-    <td><%= products.image_url %></td>
+    <% for i in 0..@buf.count-1 %>
+        <% if  @buf[i][:checked]=="1" %> 
+            <td onclick="$('#subbtn').click();"><div id=""><%= products[@buf[i][:name]] %></div></td>
+        <% end %>   
     <% end %>
   </tr>
 <% end %>
