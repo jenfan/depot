@@ -1,3 +1,9 @@
+//$('#tablepan').html('<%= j render("table") %>');
+<% if @openflag==0 %>
 tagwidth = $('#cell<%=@id%><%=@name%>').width();
-$('#cell<%=@id%><%=@name%>').html('<%= form_tag("/admin/products", method: "get") do %><%=text_field_tag(:cellchange, @cellchange, :value => @products.find_by_id(@id)[@name], :id => "fild_tag")%><%=text_field_tag(:addr, @addr, :value => "qwe", hidden: "true")%> <%=submit_tag("Update") %><%end%>');
+$('#cell<%=@id%><%=@name%>').html('<%= form_tag("/admin/jscript?lid=#{@id}&lname=#{@name}&addr=1", method: "get", remote: true) do %><%=text_field_tag(:cellchange, @cellchange, :value => @products.find_by_id(@id)[@name], :id => "fild_tag")%> <%=submit_tag("Update", hidden: true) %><%end%>');
 $('#fild_tag').width(tagwidth);
+<% end %>
+<% if @openflag==1 %>
+$('#cell<%=@id%><%=@name%>').html('<a class="btn btn-default btn-sm tablebtn<%= @name %>" href="jscript?lid=<%= @id %>&lname=<%= @name %>" id="inner<%= @id %><%= @name %>" style="width: 100%; height: 23pt;text-align: left; border-radius: 0" data-remote="true"><%= @products[@id.to_i-1][@name] %></a>');
+<% end %>

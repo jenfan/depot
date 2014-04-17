@@ -12,9 +12,18 @@ class AdminController < ApplicationController
   end  
 
   def jscript
-    @id = params[:id]
-    @name = params[:name]
+    if params[:addr]==nil
+      @openflag = 0
+      @id = params[:lid]
+      @name = params[:lname]
+    else
+      @openflag = 1
+      @id = params[:lid]
+      @name = params[:lname]
+      @newcell = params[:addr]
+    end  
     products()
+
   end
 
   def output

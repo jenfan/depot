@@ -14,28 +14,10 @@
         <div class="col-xs-12 col-md-8" style="margin-top:10px;"><%= submit_tag("Готово", id: "subbtn", class: "btn btn-primary btn-sm") %></div>
 	<% end %>
 </div>
+
 <a id="mybtn" href= "jscript" class="btn btn-primary btn-sm" data-remote="true">hi</a>
 <p></p>
-<table border="1">
-  <tr>
-    <% for i in 0..@buf.count-1 %>
-        <% if  @buf[i][:checked]=="1" %>    
-           <th id="head<%= @buf[i][:name]%>"><%= @buf[i][:name]%></th>
-        <% end %>    
-    <% end %>
-  </tr>
-
-<% @products.each do |products| %>
-
-  <tr>
-    <% for i in 0..@buf.count-1 %>
-        <% if  @buf[i][:checked]=="1" %> 
-           <td id="cell<%= products.id %><%= @buf[i][:name] %>"><a class="btn btn-default btn-sm tablebtn<%= @buf[i][:name] %>" href="jscript?id=<%= products.id %>&name=<%= @buf[i][:name] %>" id="inner<%= products.id %><%= @buf[i][:name] %>" style="width: 100%; height: 23pt;text-align: left; border-radius: 0" data-remote="true"><%= products[@buf[i][:name]] %></a></td>
-          
-        <% end %>          
-    <% end %>
-    
-  </tr>
-<% end %>
-</table>
+<div id="tablepan">
+  <%= render "table" %>
+</div>
 
