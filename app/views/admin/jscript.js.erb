@@ -1,1 +1,3 @@
-$('#cell3title').html('apapapapap');
+tagwidth = $('#cell<%=@id%><%=@name%>').width();
+$('#cell<%=@id%><%=@name%>').html('<%= form_tag("/admin/products", method: "get") do %><%=text_field_tag(:cellchange, @cellchange, :value => @products.find_by_id(@id)[@name], :id => "fild_tag")%><%=text_field_tag(:addr, @addr, :value => "qwe", hidden: "true")%> <%=submit_tag("Update") %><%end%>');
+$('#fild_tag').width(tagwidth);

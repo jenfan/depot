@@ -7,8 +7,14 @@ class AdminController < ApplicationController
     #@products = Product.all
   end
 
+  def jsmeth
+      render json: params
+  end  
+
   def jscript
-    #@products = Product.all
+    @id = params[:id]
+    @name = params[:name]
+    products()
   end
 
   def output
@@ -35,7 +41,7 @@ class AdminController < ApplicationController
     art.store(j, :string => data[buf[0][:name]])
     j+=1
     end
-    render json: data[0][buf[0][:name]]
+    render json:  buf.count
     
 
   end
@@ -63,7 +69,7 @@ class AdminController < ApplicationController
     for i in 0..file.scan("name").count-1
       @buf.store(i, :name => file.scan(/(?:[a-z_])+/)[3*i+1], :checked => file.scan(/(?:[0-9])+/)[2*i+1])
     end
-    if params.count > 2
+    if params.count > 2 && params[:cellchange]==nil
         for i in 0..cols.count-1
         if params[@buf[i][:name]]=="1"
           @buf.store(i, :name => cols[i].name, :checked => "1")
