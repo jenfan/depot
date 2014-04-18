@@ -31,18 +31,22 @@ class AdminController < ApplicationController
       @id = params[:lid]
       @name = params[:lname]
       @newcell = params[:addr]
+      ff= File.new("change.rb", "w")
+      ff.write(params[:cellchange])
+      ff.close
+      current_product = Product.find_by_id(@id.to_i)
+      current_product.update_attributes(@name => params[:cellchange]) 
     end  
     products()
 
   end
 
   def output
-    begin
-      file = File.read("lastcell.rb")
-    rescue 
-      file = nil
-    end
-    render json:  file
+    @id="1"
+    @name="title"
+    current_product = Product.find_by_id(@id.to_i)
+      #current_product[@name].update_attributes(@name params[:cellchange]) 
+    render json:  @name.to_sym
     
 
   end
