@@ -3,9 +3,10 @@
 		<ul class="nav nav-tabs nav-tabs-side nav-stacked">
 			<div class="pull-left">Интересы</div><br>
 				<li class="dropdown active">
-					<%= form_for :interest do |f| %>
-					 <%= f.select :id, @interests,
+					<%= form_for :interest, onclick: "submit();", method: "GET" do |f| %>
+					 <%= f.select :id, @interests, onclick: "submit();",
                     prompt: '...' %>
+                    <%= submit_tag("ok") %>
                     <% end %>
 				</li>
 		</ul>
@@ -23,4 +24,15 @@
 			<% end %>
 		</ul>
 	<% end %>
+
+<% value = params[:product][:discount] || 0 if params[:product] %>
+
+	<div class="pull-left">Цена</div><br>
+	<%= form_for :options, method: "GET" do %>
+		<% price = params[:product][:price] || 50 if params[:product] %>
+		<%= range_field(:product, :price, in: 1..100, value: price, onclick: "submit();") %>
+		
+
+	<% end %>
 </div>
+
