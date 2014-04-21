@@ -1,10 +1,9 @@
-<table class="table table-hover table-condensed">
-	<tr>
-		<th>ID</th>
-		<th>Menu</th>
-		<th>Name</th>
-		<th>url_name</th>
-		<th>save</th>
-	</tr>
-	<%= render partial: 'admin/view/category', collection: @category, as: :category  %>
-</table>
+<% @menu.each do |menu| %>
+	<p><div  class="label label-primary" style="border-bottom: 1px solid #eee"><%= menu.name %></div></p>
+    <% @category.find_all_by_menu_id(menu.id).each do |category| %>
+		<p><div style="margin-left: 50px;" class="label label-success"> <%= category.name %></div></p>
+		<% @subcategory.find_all_by_category_id(category.id).each do |subcategory| %>
+		   	<p><div style="margin-left: 100px;" class="label label-warning"> <%= subcategory.name %></div></p>
+		<% end %>
+	<% end %>
+<% end %>

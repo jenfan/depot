@@ -87,23 +87,17 @@ class AdminController < ApplicationController
       f.write(@buf)
       f.close
     end  
+  end
 
-    
-    
-    
-
-
-
-
+  def category
+    @menu = Menu.all
+    @category = Category.all
+    @subcategory = Subcategory.all
 
 
 
-    @categories = Category.all.map { |n| [n.name, n.id] }
-    @subcategories = Subcategory.all
-    @interests = Interest.all.map { |n| [n.name, n.id] }
-    # @option_values = product.option_values
-    logger.info(params[:product])
-  	# @products = Product.all.search(params[:page])
+    #@category = Category.all
+    #@menu = Menu.all.map { |m| [m.name, m.id] }
   end
 
   def add_product_option
@@ -129,11 +123,6 @@ class AdminController < ApplicationController
     @interest = Interest.find(interest_params[:id])
     flash[:success] = "Successfully updated..." if @interest.update(interest_params)
     render 'interest'
-  end
-
-  def category
-  	@category = Category.all
-    @menu = Menu.all.map { |m| [m.name, m.id] }
   end
 
   def option_type
