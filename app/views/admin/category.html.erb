@@ -1,13 +1,4 @@
-<% @menu.each do |menu| %>
-	<p><a  class="label label-primary" style="border-bottom: 1px solid #eee" href="http://ya.ru"><%= menu.name %><span class="glyphicon glyphicon-pencil" style="margin-left: 10px;"></span></a></p>
-	<span class="glyphicon glyphicon-plus" style="margin-left: 0px;"></span>
-    <% @category.find_all_by_menu_id(menu.id).each do |category| %>
-		<p><div style="margin-left: 50px;" class="label label-success"> <%= category.name %><span class="glyphicon glyphicon-pencil" style="margin-left: 10px;"></span></div></p>
-		<span class="glyphicon glyphicon-plus" style="margin-left: 50px;"></span>
-		<% @subcategory.find_all_by_category_id(category.id).each do |subcategory| %>
-		   	<p><div style="margin-left: 100px;" class="label label-warning"> <%= subcategory.name %><span class="glyphicon glyphicon-pencil" style="margin-left: 10px;"></span></div></p>
-		<% end %>
-		<p><span class="glyphicon glyphicon-plus" style="margin-left: 100px;"></span></p>
-	<% end %>
 
+<% @menu.each_with_index do |menu,i| %>
+	<div id="menu<%=menu.id%>"><a  class="label label-primary" style="border-bottom: 1px solid #eee" href="categoryjs?menu=<%= menu.id%>&check=1" data-remote="true"><%= menu.name %><span class="glyphicon glyphicon-pencil" style="margin-left: 10px;"></span></a></div>
 <% end %>

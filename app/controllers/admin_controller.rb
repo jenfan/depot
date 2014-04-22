@@ -100,6 +100,27 @@ class AdminController < ApplicationController
     #@menu = Menu.all.map { |m| [m.name, m.id] }
   end
 
+  def categoryjs
+    @menu = Menu.all
+    @category = Category.all
+    @subcategory = Subcategory.all
+    
+    
+    if params[:menu]!=nil
+      @mycat = @category.find_all_by_menu_id(@menu.find_by_id(params[:menu].to_i).id)
+      @mnum = params[:menu]
+      @check = params[:check]
+    end
+    if params[:category]!=nil
+      @mysub = @subcategory.find_all_by_category_id(@category.find_by_id(params[:category].to_i).id)
+      @catcheck = params[:catcheck]
+      @catnum = params[:category]
+    end
+    @render=params[:render]
+    
+    
+  end
+  
   def add_product_option
     # option = add_product_option(Product_id, value_id)
   end

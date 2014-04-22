@@ -22,6 +22,7 @@ Demo::Application.routes.draw do
   get 'admin/json', to: 'admin#output'
   get 'admin/jscript', to: 'admin#jscript'
   get 'admin/jsmeth', to: 'admin#jsmeth'
+  get 'admin/categoryjs', to: 'admin#categoryjs'
   match 'admin/products', to: 'admin#products', via: 'get'
   match 'admin/product_option_value', to: 'admin#product_option_value', via: 'GET', as: 'product_option_value'
   match 'admin/product_option_value', to: 'admin#add_product_option', via: 'PATCH', as: 'add_product_option'
