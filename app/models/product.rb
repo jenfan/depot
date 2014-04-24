@@ -2,8 +2,12 @@ class Product < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :subcategory
 	belongs_to :interest
+	belongs_to :prototype
+
 	has_many :line_items
+	has_many :properties, through: :prototype
 	has_many :product_option_values
+	has_many :property_values
 	has_many :option_values, through: :product_option_values
 	before_destroy :ensure_not_referenced_by_any_line_item
 

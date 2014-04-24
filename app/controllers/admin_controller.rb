@@ -5,6 +5,14 @@ class AdminController < ApplicationController
 
   def index
     #@products = Product.all
+    @product = Product.first
+    # @properties = @product.property_values.includes(:property)
+    @properties = @product.prototype.properties
+    #@properties_val_prop_vals = PropertiesValue.properties
+    @properties_all = Property.all
+    @prototypes = Prototype.all
+    @prot_prop = PrototypeProperty.all
+    
   end
 
   def output

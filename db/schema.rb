@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415100610) do
+ActiveRecord::Schema.define(version: 20140423194802) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20140415100610) do
     t.integer  "subcategory_id"
     t.integer  "menu_id"
     t.integer  "interest_id"
+    t.integer  "prototype_id"
   end
 
   add_index "products", ["interest_id"], name: "index_products_on_interest_id"
@@ -120,17 +121,17 @@ ActiveRecord::Schema.define(version: 20140415100610) do
     t.datetime "updated_at"
   end
 
-  create_table "properties_values", force: true do |t|
-    t.integer  "properties_id"
-    t.integer  "prototype_id"
+  create_table "property_values", force: true do |t|
+    t.integer  "property_id"
+    t.integer  "product_id"
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "prototype_properties", force: true do |t|
-    t.integer  "id_properties"
-    t.integer  "id_prototype"
+    t.integer  "property_id"
+    t.integer  "prototype_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
