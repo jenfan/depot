@@ -25,14 +25,28 @@
 		</ul>
 	<% end %>
 
-<% value = params[:product][:discount] || 0 if params[:product] %>
+<% value = params[:product][:price] || 0 if params[:product] %>
 
-	<div class="pull-left">Цена</div><br>
-	<%= form_for :options, method: "GET" do %>
+	<div class="pull-left">Цена: <%= value %></div><br>
+	
+	<%= form_tag '', authenticity_token: false, method: "GET" do %>
+
 		<% price = params[:product][:price] || 50 if params[:product] %>
 		<%= range_field(:product, :price, in: 1..100, value: price, onclick: "submit();") %>
 		
 
-	<% end %>
+	
+	<div class="pull-left">Поиск: </div><br>
+	<% @properties.each do |property| %>
+	<% array = property.property_values.where(property_id: property.id).map { |a| [a.value, a.id] } %>
+    	<p>
+            <%= property.name %> : 
+			<%= select(:property, :property_id, array, selected: params[:property_id] ,onclick: "submit();") %>
+
+
+    	</p>		
+    <% end %>
+    <%= submit_tag("ok") %>
+    <% end %>
 </div>
 

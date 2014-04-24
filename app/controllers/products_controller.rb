@@ -110,6 +110,7 @@ class ProductsController < ApplicationController
       end
       @current_category = @current_menu.categories.find_by_url_name(params[:category]) if params[:category]
       @current_subcategory = @current_category.subcategories.find_by_url_name(params[:subcategory]) if params[:subcategory]
+      @properties=Prototype.first.properties
     end
 
     def set_cart

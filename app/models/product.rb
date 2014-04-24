@@ -2,13 +2,20 @@ class Product < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :subcategory
 	belongs_to :interest
+	belongs_to :prototype
+
 	has_many :line_items
+	has_many :properties, through: :prototype
 	has_many :product_option_values
+	has_many :property_values
 	has_many :option_values, through: :product_option_values
 	before_destroy :ensure_not_referenced_by_any_line_item
 
-	
-	
+	#attr_accessible :articul, :title, :proizvoditel, :price, :price_discount, :price_second, :kol_v_upakovke
+	#attr_accessible :category, :subcategory, :discount, :hit, :is_show, :vsego, :reserv
+	#attr_accessible :svobod_ostatok, :is_new, :description, :image_url, :is_show, :category_id, :subcategory_id, :menu_id, :interest_id						
+
+
 	# scope :subcategory (where category)
 	def self.search(page,number=9,order='title')
 	  paginate :per_page => number, :page => page,

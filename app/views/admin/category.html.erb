@@ -1,10 +1,4 @@
-<table class="table table-hover table-condensed">
-	<tr>
-		<th>ID</th>
-		<th>Menu</th>
-		<th>Name</th>
-		<th>url_name</th>
-		<th>save</th>
-	</tr>
-	<%= render partial: 'admin/view/category', collection: @category, as: :category  %>
-</table>
+
+<% @menu.each_with_index do |menu,i| %>
+	<div id="menu<%=menu.id%>"><a  class="label label-primary" style="border-bottom: 1px solid #eee" href="categoryjs?menu=<%= menu.id%>&check=1" data-remote="true"><%= menu.name %><span class="glyphicon glyphicon-pencil" style="margin-left: 10px;"></span></a></div>
+<% end %>
