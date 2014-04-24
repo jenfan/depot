@@ -1,0 +1,8 @@
+<% if @check.to_i==1 %>
+<a  class="label label-primary" style="border-bottom: 1px solid #eee" href="categoryjs?menu=<%= @mnum%>&check=2" data-remote="true"><%= @menu.find_by_id(@mnum.to_i).name %><span class="glyphicon glyphicon-pencil" style="margin-left: 10px;"></span></a>
+<% @mycat.each do |category| %>
+<div id="category<%=category.id%>"><a style="margin-left: 50px;" class="label label-success" href="categoryjs?category=<%= category.id%>&catcheck=1&render=category" data-remote="true"> <%= category.name %><span class="glyphicon glyphicon-pencil" style="margin-left: 10px;"></span></a></div>	
+<% end %>
+<% else %>
+<a  class="label label-primary" style="border-bottom: 1px solid #eee" href="categoryjs?menu=<%= @mnum%>&check=1" data-remote="true"><%= @menu.find_by_id(@mnum.to_i).name %><span class="glyphicon glyphicon-pencil" style="margin-left: 10px;"></span></a>
+<% end %>
