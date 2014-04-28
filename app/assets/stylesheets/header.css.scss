@@ -1,21 +1,21 @@
+$blue : #0081c2;
 
-.ul-category-sidebar {
-	text-decoration: none;
-	list-style: none;
-	padding: 3px;
-	li {
-		margin-left: 15px;
+.dropdown-menu > li {
+	.category {
+		color: $blue;	
 	}
-	text-align: left;
+	.active {
+			color: #fff;
+	}
+		
 }
-.sidebar_category {
-	color: #0073b8;
-}
+
 .acitve > .subcategory {
 	color: #fff !important;
 }
 a.category {
 	font-weight: 500 !important;
+	color: #fff;
 	margin-top: 3px;
 }
 a.subcategory {
@@ -49,6 +49,9 @@ a.subcategory {
 .dropdown-menu {
  	margin-top: -3px;
  	border-radius: 2px;
+ 	.active > a {
+ 		color: #fff;
+ 	}
  }
  /*это для бокового*/
 .dropdown-submenu > .dropdown-menu {

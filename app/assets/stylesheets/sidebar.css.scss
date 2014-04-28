@@ -1,3 +1,18 @@
+.cat-badge {
+	color: #999;
+	font-size: .85em;
+	line-height: .85em;
+}
+
+#side {
+float:left; 
+text-align: center;
+/*padding-top: 20px;*/
+width: 195px;
+margin-bottom: 10px;
+margin-top: 18px;
+}
+
 .filter {
 	border-top:1px solid #ddd;
 	font: 13px/18px Arial,Helvetica,sans-serif;
@@ -13,7 +28,7 @@
 			margin-left:-15px;
 		}
 	}
-	.g-icon-item {
+	.strelka {
 	background:url(scheme_black.png?t=1398088929) 0 0 no-repeat;
 	background-position:0 -54px;
 	width: 17px;
@@ -24,4 +39,17 @@
 	line-height: 0;
 	overflow: hidden;
 	}
+}
+
+.ul-category-sidebar {
+	text-decoration: none;
+	list-style: none;
+	padding: 0px;
+	li {
+		margin-left: 8px;
+	}
+	text-align: left;
+}
+.sidebar_category {
+	color: #0073b8;
 }

@@ -2,7 +2,7 @@
     	<div class="filter-head">
 		    <span class="title">
 		        <span class="g-icon-h">
-		        	<span class="g-icon-item"></span>
+		        	<span class="strelka"></span>
 		        </span><b class="g-pseudo-h"><%= name %></b>
 		        <span class="b-catalog-filter-item-help js-construct"></span>
 		    </span>
@@ -10,15 +10,9 @@
 		<div class="filter-body">
 				<% array.each do |a| %>
 				<% checked = false %>
-				<% if params[:property] %>
-					<% if params[:property].include?("#{a.id}") %>
-					<% checked = true %>
-					<% else %>
-					<% checked = false %>
-					<% end %>
-				<% end %>
+					<% checked = params[:property].include?("#{a.id}") if params[:property]  %>
 	                <div>
-	                	<%= check_box_tag "property[#{a.id}]", a.id, false, checked: checked %>
+	                	<%= check_box_tag "property[#{a.id}]", a.id, false, checked: checked || false %>
 	                	<%= label_tag "property[#{a.id}]", a.value  %>
 	                </div>
 	            <% end %>

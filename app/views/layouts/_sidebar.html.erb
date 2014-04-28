@@ -1,6 +1,7 @@
 <div id="side">
 	<!-- открываем сайдбар -->
-	<% if params[:subcategory].nil? %>
+	<% if params[:subcategory].nil? and !params[:category].nil? %>
+	<div class="border">
 	 	<ul class="ul-category-sidebar">
 			 <% if params[:menu] && params[:category].blank? %>
 				<div class="pull-left">Категории</div><br>
@@ -11,10 +12,11 @@
 				<%= render partial: 'layouts/categories', collection: @current_category.subcategories, as: :category %>
 			<% end %>
 		</ul>
+	</div>
 	<% end %>
 
 <% value = params[:product][:price] || 0 if params[:product] %>
-
+<div class="border">
 	<div class="pull-left">Цена: <%= value %></div><br>
 	
 	<%= form_tag({action: "index"}, {multipart:true, method: "GET"}) do %>
@@ -33,7 +35,7 @@
     <%= submit_tag("Найти", class: "btn btn-sm btn-primary") %>
     <BR><BR>
     <% end %>
-
+</div>
    
 
 

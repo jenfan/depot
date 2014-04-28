@@ -1,14 +1,14 @@
 <% if params[:menu] && params[:category].blank? %>
 	<li class="sidebar_category">
 		<%= link_to "#{params["menu"]}/#{category.url_name}" do %>
-		<%= category.name %> <span class=badge pull-right><%= category.products.size %></span>
+		<%= category.name %> <span class="cat-badge"><%= category.products.size %></span>
 		<% end %>
 	</li>
 <% end %>
 <% if params[:category]%>
 	<li class="sidebar_category">
 		<%= link_to "#{params["category"]}/#{category.url_name}" do%>
-		<%= category.name %> <span class=badge pull-right><%= category.products.size %></span>
+		<%= category.name %> <span class="cat-badge"><%= category.products.size %></span>
 		<% end %>
 	</li>
 <% end %>

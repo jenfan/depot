@@ -26,6 +26,7 @@
   }
  .border {
  	margin: 5px;
+ 	margin-bottom: 20px;
  	padding: 10px 10px;
  	background-color: #fff; 
 	border-radius: 6px;
@@ -115,14 +116,5 @@
 	overflow: hidden;
 
 }
-#side {
-float:left; 
-text-align: center;
-/*padding-top: 20px;*/
-width: 195px;
-margin-bottom: 10px;
-box-shadow: 0 0 3px 0 rgba(0,0,0,.25);
-margin-top: 22px;
-border-radius: 6px;
-}
+
 
