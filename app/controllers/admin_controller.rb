@@ -190,6 +190,10 @@ class AdminController < ApplicationController
     end
   end
 
+  def prototype
+    @prototypes = Prototype.includes(:properties).all
+  end
+
   def product_option_value
     @product_option_values = Product.find(1).product_option_values
   end

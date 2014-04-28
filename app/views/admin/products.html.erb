@@ -1,7 +1,7 @@
 <h2><b>Чудо-фильтр</b></h2>
 <div class="jumbotron" style="height:300px;">
   
- 
+ <%= @buf %>
     <%= form_tag("/admin/products", method: "get") do %>
     	<% for i in 0..@buf.count-1 %>
             <% if  @buf[i][:checked]=="0" %>	

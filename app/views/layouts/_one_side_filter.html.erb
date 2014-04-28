@@ -1,0 +1,26 @@
+<div class="filter">
+    	<div class="filter-head">
+		    <span class="title">
+		        <span class="g-icon-h">
+		        	<span class="g-icon-item"></span>
+		        </span><b class="g-pseudo-h"><%= name %></b>
+		        <span class="b-catalog-filter-item-help js-construct"></span>
+		    </span>
+		</div>
+		<div class="filter-body">
+				<% array.each do |a| %>
+				<% checked = false %>
+				<% if params[:property] %>
+					<% if params[:property].include?("#{a.id}") %>
+					<% checked = true %>
+					<% else %>
+					<% checked = false %>
+					<% end %>
+				<% end %>
+	                <div>
+	                	<%= check_box_tag "property[#{a.id}]", a.id, false, checked: checked %>
+	                	<%= label_tag "property[#{a.id}]", a.value  %>
+	                </div>
+	            <% end %>
+		</div>
+	</div>

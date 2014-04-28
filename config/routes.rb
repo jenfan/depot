@@ -18,6 +18,8 @@ Demo::Application.routes.draw do
     end
 
 
+
+
   get 'admin', to: 'admin#index'
   get 'admin/json', to: 'admin#output'
   get 'admin/jscript', to: 'admin#jscript'
@@ -37,6 +39,7 @@ Demo::Application.routes.draw do
   match 'admin/interest', to: 'admin#interest', via: 'GET'
   match 'admin/interest', to: 'admin#interest_create', via: 'POST'
   match 'admin/interest', to: 'admin#interest_update', via: 'PATCH'
+  match 'admin/prototype', to: 'admin#prototype', via: 'GET'
 
   match '/signout', to: 'sessions#destroy', via: 'delete'
   get '/signin', to: 'sessions#new'
