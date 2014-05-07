@@ -11,10 +11,72 @@
 		<li><%= link_to 'Вход', '#' %></li>
 	</ul>
 </div>
-
-<br><BR><BR><BR>
+<div class="row">
+	<div class="col-md-2">
+		<%= link_to image_tag("logo.png", class:"logo"), root_path %>
+	</div>
+	<div class="col-md-10">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="row header_bar" style="margin:10px 0;">
+					<%= image_tag "dostavka.png", size:"40x40" %> Доставка
+					<%= image_tag "oplata.png", size:"40x40" %> Оплата
+					<%= image_tag "otzivi.png", size:"40x40" %> Отзывы
+					<%= image_tag "news.png", size:"40x40" %> Новости
+					<%= image_tag "optom.png", size:"40x40" %> Оптом
+					<%= image_tag "akcii.png", size:"40x40" %> Акции
+				</div>
+			</div>
+			<div class="col-md-4" style="padding-left:0;">
+				<span class="header_tel"> <span class="gray">(495)</span> 276-66-77</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8" style="padding-right:8px">
+				<div class="banner_top border">
+					Осенний марафон подарков
+				</div>
+				<div class="chasi_raboti col-md-2 border">
+					Пн-Вт:
+					<span class="label label-info">с 9:00-21:00</span><br>
+					Сб-Вс:
+					<span class="label label-info">с 11:00-19:00</span>
+				</div>
+			</div>
+			<div class="col-md-4" style="padding-left:0">
+				<div class="border margin-top-5 e-mail">
+					Оставьте адрес для получения E-mail рассылки с новостями и акциями.
+					<div class="input-group">
+						<input type="text" class="form-control">
+					    <span class="input-group-btn">
+					      <button class="btn btn-default" type="button">go</button>
+					    </span>
+			  	  	</div>
+				</div>
+			</div>
+		</div>
+			<div class="row">
+				<div class="col-md-8">
+					<div class="input-group">
+						<input type="text" class="form-control">
+					    <span class="input-group-btn">
+					      <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+					    </span>
+			  	  	</div><!-- /input-group -->
+			  	</div>
+			  	<div class="col-md-4">
+			  		<div class="obratniy_zvonok">
+			  			ОБРАТНЫЙ ЗВОНОК
+			  		</div>
+			  	</div>
+			</div>
+	</div>
+	
+	
+    
+</div>
 <div class="container">
-        <hr class="bs-docs-separator">
+        <hr class="bs-docs-separator" style="margin-top:0">
         <!--Выпадающее меню-->
         <ul class="nav nav-tabs nav-tabs-top">
             <%= render @menu %>

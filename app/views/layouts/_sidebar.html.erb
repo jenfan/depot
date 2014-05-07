@@ -1,4 +1,4 @@
-<div id="side">
+<div id="side" class="col-md-2">
 	<!-- открываем сайдбар -->
 	<% if params[:subcategory].nil? and !params[:category].nil? %>
 	<div class="border">
@@ -32,7 +32,7 @@
 		<%= render partial: "layouts/one_side_filter", locals: {array: array, name: name}  %>
     <% end %>
 
-    <%= submit_tag("Найти", class: "btn btn-sm btn-primary") %>
+    <%= submit_tag("Подобрать", class: "btn btn-sm btn-primary") %>
     <BR><BR>
     <% end %>
 </div>

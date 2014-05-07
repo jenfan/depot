@@ -4,4 +4,4 @@
 
 $ ->
 	$('.products > img').click ->
-		$(this).find(':submit').click()
+		$(this).parent().find(':submit').click()

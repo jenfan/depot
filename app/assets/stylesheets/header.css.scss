@@ -62,3 +62,70 @@ a.subcategory {
                 {
                     display: block;
                 }
+
+
+.header_bar > img {
+	margin-left: 5px;
+}
+
+.header_tel {
+	font-size: 20pt;
+	color: $blue;
+	.gray {
+		font-size: 12pt;
+		vertical-align: top; 
+	}
+}
+
+.margin-top-5 {
+	margin: 0 !important;
+	margin-top:5px !important;
+
+}
+
+.banner_top {
+	padding: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 16pt;
+	border: 1px dotted;
+	height: 84px;
+	float: left;
+	width: 80%;
+}
+.chasi_raboti {
+	vertical-align: bottom;
+	float: right;
+	height: 84px;
+	border: 1px solid orange;
+	padding: 1px;
+	text-align: center;
+	font-size: 12px;
+	.label {
+		font-size: 120%;
+	}
+}
+.logo {
+	float: left;
+	width: 210px;
+	height: 210px;
+}
+.e-mail {
+	.form-control {
+		height: 23px;
+	}
+	.btn {
+		padding: 2px 5px;
+		font-size: 12px;
+	}
+}
+.obratniy_zvonok {
+	color: $blue;
+	font-size:16pt;
+	float: right;
+}
+.slider_big {
+	overflow: hidden;
+	background: url('romashka.jpg');
+	height: 250px;
+}

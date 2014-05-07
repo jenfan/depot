@@ -16,7 +16,7 @@
 	    <!-- div sidebar -->
 			<%= render 'layouts/sidebar' if !(action_name == 'show' or controller.controller_name == 'static_pages') %>
 		
-		<div id="main">
+		<div id="main" class="col-md-10">
 			<%= render 'layouts/messages' %>
 			
 			<%= yield %>

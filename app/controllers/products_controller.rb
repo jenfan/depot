@@ -7,7 +7,8 @@ class ProductsController < ApplicationController
   # GET /products.json
 
   def index
-    @products ||= Product.search params[:page]
+    # @products ||= Product.search params[:page]
+    render 'static_pages/main'
   end
 
   def index_menu
