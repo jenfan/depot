@@ -10,18 +10,15 @@
 <body class='<%= controller.controller_name %> , container'>
 	<%= render 'layouts/header' %>
     <%= render @cart %>
-    <div>
-    	<%= render partial: 'layouts/breadcrumb' if @current_menu %>
+	<%= render partial: 'layouts/breadcrumb' if @current_menu %>
+	<%= render 'layouts/messages' %>
 
-	    <!-- div sidebar -->
+	    <div class="row">
 			<%= render 'layouts/sidebar' if !(action_name == 'show' or controller.controller_name == 'static_pages') %>
-		
-		<div id="main" class="col-md-10">
-			<%= render 'layouts/messages' %>
-			
 			<%= yield %>
 		</div>
-	</div>
+
+	<%= render partial: 'stuff/main4steps' if action_name == 'index' %>
 	<%= render 'layouts/footer' %>
 	<%= debug(params) if Rails.env.development? %>
 </body>
