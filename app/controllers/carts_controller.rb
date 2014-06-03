@@ -5,7 +5,6 @@ class CartsController < ApplicationController
   # GET /carts.json
   def index
     redirect_to store_url
-    flash = { success: "asdasd" }
   end
 
   # GET /carts/1

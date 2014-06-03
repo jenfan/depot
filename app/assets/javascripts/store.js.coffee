@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-	$('.store .entry > img').click ->
+	$('.store > img').click ->
 		$(this).parent().find(':submit').click()

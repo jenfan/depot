@@ -1,2 +1,6 @@
-$('#cart').html("<%=j render @cart %>");
-$('#current_item').css({'background-color':'#88ff88'}).animate({'background-color':'#114411'}, 1000);
+<% if @current_item.quantity != 0  %>
+$('#line_item<%= @current_item.id %>').html("<%=j render @current_item, template: 'line_item', notr: 'yes' %>"); 
+<% else %>
+$('#line_item<%= @current_item.id %>').html(""); 
+<% end %>
+$('.current_item').css({'background-color':'#fee'}).animate({'background-color':'#fff'}, 1000);

@@ -1,15 +1,51 @@
 class Product < ActiveRecord::Base
-	validates :title, :description, :image_url, presence: true
-    validates :price, numericality: {greater_than_or_equal_to: 0.01}
-    validates :title, uniqueness: true
-    validates :image_url, allow_blank: true, format: {
-	    with: %r{\.(gif|jpg|png)\z}i,
-	    message: 'must be a URL for GIF, JPG or PNG image.'
-	    # URL должен указывать на изображение формата GIF, JPG или PNG
-	}
+	belongs_to :category
+	belongs_to :subcategory
+	belongs_to :interest
+	belongs_to :prototype
 
 	has_many :line_items
+	has_many :properties, through: :prototype
+	has_many :product_option_values
+	has_many :property_values
+	has_many :option_values, through: :product_option_values
 	before_destroy :ensure_not_referenced_by_any_line_item
+
+	#attr_accessible :articul, :title, :proizvoditel, :price, :price_discount, :price_second, :kol_v_upakovke
+	#attr_accessible :category, :subcategory, :discount, :hit, :is_show, :vsego, :reserv
+	#attr_accessible :svobod_ostatok, :is_new, :description, :image_url, :is_show, :category_id, :subcategory_id, :menu_id, :interest_id						
+
+
+	# scope :subcategory (where category)
+	def self.search(page,number=9,order='title')
+	  paginate :per_page => number, :page => page,
+	           # :conditions => ['name like ?', "%#{search}%"],
+	           :order => order
+	end
+
+	
+	def add_product_option(product_id,value_id)
+		current_product = Product.find(product_id)
+		option = current_product.product_option_values.where(product_id:product_id, option_value_id: value_id)
+
+		if option
+			option.quantity+=1
+		else
+			option.build
+        end
+        option
+	end
+
+	#validates :title, :description, :image_url, presence: true
+    #validates :price, numericality: {greater_than_or_equal_to: 0.01}
+    #validates :title, uniqueness: true
+    #validates :image_url, allow_blank: true, format: {
+	 #   with: %r{\.(gif|jpg|png)\z}i,
+	  #  message: 'must be a URL for GIF, JPG or PNG image.'
+	    # URL должен указывать на изображение формата GIF, JPG или PNG
+	#}
+
+	
 	#...
 	private
 	# убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар

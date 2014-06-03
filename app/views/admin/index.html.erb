@@ -1,0 +1,22 @@
+<h1>Admin#index</h1>
+<p>Find me in app/views/admin/index.html.erb</p>
+<h1>Добро пожаловать</h1>
+Сейчас <%= Time.now %>
+
+<!-- @product = Product.first
+    @properties_val = PropertiesValue.find_all_by_product_id(@product.id)
+    @properties_all 
+    @prototypes
+ -->
+    
+    	<p><%= @product.title %></p>
+    	
+
+
+    <% @properties.each do |property| %>
+    	<p>
+            <%= property.name %> : <%= @product.property_values.find_by_property_id(property.id).value %>
+    	</p>		
+    <% end %>
+
+    

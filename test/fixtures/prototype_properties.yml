@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_properties: 1
+  id_prototype: 1
+
+two:
+  id_properties: 1
+  id_prototype: 1

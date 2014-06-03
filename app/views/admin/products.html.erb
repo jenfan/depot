@@ -1,0 +1,23 @@
+<h2><b>Чудо-фильтр</b></h2>
+<div class="jumbotron" style="height:300px;">
+  
+ 
+    <%= form_tag("/admin/products", method: "get") do %>
+    	<% for i in 0..@buf.count-1 %>
+            <% if  @buf[i][:checked]=="0" %>	
+                <div class="col-xs-6 col-sm-3"><%= check_box_tag @buf[i][:name], "1", false%> <%= @buf[i][:name] %></div>
+            <% else %>
+                <div class="col-xs-6 col-sm-3"><%= check_box_tag @buf[i][:name], "1", true%> <%= @buf[i][:name] %></div>
+            <% end %>    
+        <% end %>    
+        <div class="col-xs-12 col-md-8" style="margin-top:20px;">Поиск: <%= text_field_tag(:orderlink, @orderlink, :id => "test") %></div>
+        <div class="col-xs-12 col-md-8" style="margin-top:10px;"><%= submit_tag("Готово", id: "subbtn", class: "btn btn-primary btn-sm") %></div>
+	<% end %>
+</div>
+
+<div id="closecell"><a id="closebtn" href= "jsmeth" class="btn btn-primary btn-sm" data-remote="true" >update</a></div><script type="text/javascript">$('#closecell').hide();</script>
+<p></p>
+<div id="tablepan">
+  <%= render "table" %>
+</div>
+

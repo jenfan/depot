@@ -7,19 +7,22 @@
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 </head>
-<body class='<%= controller.controller_name %>'>
+<body class='<%= controller.controller_name %> , container'>
 	<%= render 'layouts/header' %>
-	<div id="columns">
-		<%= render 'layouts/sidebar' %>
+    <%= render @cart %>
+    <div>
+    	<%= render partial: 'layouts/breadcrumb' if @current_menu %>
+
+	    <!-- div sidebar -->
+			<%= render 'layouts/sidebar' if !(action_name == 'show' or controller.controller_name == 'static_pages') %>
+		
 		<div id="main">
 			<%= render 'layouts/messages' %>
+			
 			<%= yield %>
-			 <%= render 'layouts/footer' %>
-			<%= debug(params) if Rails.env.development? %>
 		</div>
 	</div>
-	
-
-
+	<%= render 'layouts/footer' %>
+	<%= debug(params) if Rails.env.development? %>
 </body>
 </html>

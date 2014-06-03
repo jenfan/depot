@@ -1,24 +1,37 @@
 source 'https://rubygems.org'
-
+ruby '2.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
+gem 'bcrypt-ruby', '3.1.2'
+gem 'sass-rails', '~> 4.0.0'
+gem 'bootstrap-sass', '~> 3.1.1'
+gem 'capistrano', '>= 3.0'
+gem 'pg', '0.17.1'
+gem 'turbolinks'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
-# Use SCSS for stylesheets
-gem 'sass-rails', '4.0.1'
-gem 'bootstrap-sass', '2.3.2.0'
 group :development do
+	gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba'
+	gem 'sqlite3'
 	gem 'faker', '1.1.2'
-	gem 'rails_layout'
+	# gem 'rails_layout'
+	gem 'capistrano-rails', require: false
+  	gem 'capistrano-bundler', require: false
+  	gem 'capistrano-rvm', require: false
 end
 
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+group :assets do
+	  # Use Uglifier as compressor for JavaScript assets
+	gem 'uglifier', '>= 1.3.0'
+	# Use CoffeeScript for .js.coffee assets and views
+	gem 'coffee-rails', '~> 4.0.0'
+end
 
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+group :production do
+  
+  # gem 'mysql'
+  gem 'rails_12factor', '0.0.2'
+  gem "activerecord-postgresql-adapter"
+end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -26,17 +39,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem "jquery-rails", "~> 2.3.0"
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-
 gem 'will_paginate', '~> 3.0'
-
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

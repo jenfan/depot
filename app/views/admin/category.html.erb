@@ -1,0 +1,4 @@
+
+<% @menu.each_with_index do |menu,i| %>
+	<div id="menu<%=menu.id%>"><a  class="label label-primary" style="border-bottom: 1px solid #eee" href="categoryjs?menu=<%= menu.id%>&check=1" data-remote="true"><%= menu.name %><span class="glyphicon glyphicon-pencil" style="margin-left: 10px;"></span></a></div>
+<% end %>
