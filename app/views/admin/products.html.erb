@@ -1,0 +1,17 @@
+<%= debug params %>
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Options</th>
+		<th>img</th>
+		<th>category</th>
+		<th>description</th>
+		<th>price</th>
+		<th>save</th>
+	</tr>
+	<%= page_entries_info @products %>
+		 <%= will_paginate @products, :container => "<div>", class: "col-md-4" %>
+	<%= render partial: 'admin/view/prod', collection: @products, as: :product  %>
+</table>
+

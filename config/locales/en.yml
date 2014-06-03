@@ -21,3 +21,17 @@
 
 en:
   hello: "Hello world"
+
+  will_paginate:
+    previous_label: "&#8592; Пред"
+    next_label: "След &#8594;"
+    page_gap: "&hellip;"
+
+    page_entries_info:
+      single_page_html:
+        zero:  "Товаров не найдено в этой категории"
+        one:   "Всего <b>1</b> товар в этой категории"
+        other: "Просмотр <b>всех&nbsp;%{count}</b> товаров в этой категории"
+
+      multi_page: "Dgg %{model} %{from} - %{to} of %{count} in total"
+      multi_page_html: "<div class='col-md-8 center'>Просмотр товаров <b>%{from}&nbsp;-&nbsp;%{to}</b> из <b>%{count}</b> в этой категории</div>"

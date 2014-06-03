@@ -11,11 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131152338) do
+ActiveRecord::Schema.define(version: 20140411105345) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "url_name"
+    t.integer  "menu_id"
+  end
+
+  create_table "interests", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "line_items", force: true do |t|
@@ -26,11 +40,92 @@ ActiveRecord::Schema.define(version: 20140131152338) do
     t.integer  "quantity",   default: 1
   end
 
-  create_table "products", force: true do |t|
+  create_table "menus", force: true do |t|
+    t.string   "name"
+    t.string   "permalink"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "option_types", force: true do |t|
+    t.string   "name"
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "option_values", force: true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.integer  "option_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "option_values", ["option_type_id"], name: "index_option_values_on_option_type_id"
+
+  create_table "orders", force: true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.string   "email"
+    t.string   "pay_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "product_option_values", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "option_value_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "product_option_values", ["option_value_id"], name: "index_product_option_values_on_option_value_id"
+  add_index "product_option_values", ["product_id"], name: "index_product_option_values_on_product_id"
+
+  create_table "products", force: true do |t|
+    t.decimal  "articul"
+    t.string   "title"
+    t.string   "proizvoditel"
+    t.decimal  "price",                           precision: 8, scale: 2
+    t.decimal  "price_discount",                  precision: 8, scale: 2
+    t.decimal  "price_second",                    precision: 8, scale: 2
+    t.decimal  "price_second_discount",           precision: 8, scale: 2
+    t.integer  "kol_v_upakovke",        limit: 8
+    t.string   "category"
+    t.string   "subcategory"
+    t.decimal  "discount"
+    t.boolean  "hit"
+    t.boolean  "is_show"
+    t.decimal  "vsego"
+    t.decimal  "reserv"
+    t.decimal  "svobod_ostatok"
+    t.boolean  "is_new"
     t.text     "description"
     t.string   "image_url"
-    t.decimal  "price",       precision: 8, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "category_id"
+    t.integer  "subcategory_id"
+    t.integer  "menu_id"
+    t.integer  "interest_id"
+  end
+
+  add_index "products", ["interest_id"], name: "index_products_on_interest_id"
+
+  create_table "subcategories", force: true do |t|
+    t.integer  "category_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "url_name"
+    t.integer  "menu_id"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

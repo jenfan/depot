@@ -1,3 +1,22 @@
-<header class="navbar navbar-top navbar-inverse">
-  
-</header>
+
+<div class="row">
+	<ul class="nav nav-tabs">
+		<li><%= link_to 'Admin', admin_path %></li>
+		<li><%= link_to 'О нас', about_path %></li>
+		<li><%= link_to 'Бонус', bonus_path %></li>
+		<li><%= link_to 'Контакт', contact_path %></li>
+		<li><%= link_to 'Помощь', help_path %></li>
+		<li><%= link_to 'Задать вопрос', vopros_path %></li>
+		<li><%= link_to 'Регистрация', "#" %></li>
+		<li><%= link_to 'Вход', '#' %></li>
+	</ul>
+</div>
+
+<br><BR><BR><BR>
+<div class="container">
+        <hr class="bs-docs-separator">
+        <!--Выпадающее меню-->
+        <ul class="nav nav-tabs nav-tabs-top">
+            <%= render @menu %>
+        </ul>
+    </div>

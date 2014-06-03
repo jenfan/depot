@@ -1,16 +1,53 @@
 Demo::Application.routes.draw do
-  resources :line_items do
-    member do
-      get 'remove_item'
-    end
-  end
-  
-  resources :carts
+  root to: 'products#index', as: 'store'
+  get '/about', to: 'static_pages#about', as: 'about'
+  get '/bonus', to: 'static_pages#bonus', as: 'bonus'
+  get '/contact', to: 'static_pages#contact', as: 'contact'
+  get '/help', to: 'static_pages#help', as: 'help'
+  get '/vopros', to: 'static_pages#vopros', as: 'vopros'
 
-  get "store/index"
+
+  resources :orders, :carts, :users
+  resources :sessions , only: [:new, :create, :destroy]
+  get "/products/:id", to: 'products#show', as: 'product'
   resources :products
+    resources :line_items do
+      member do
+        get 'remove_item'
+      end
+    end
 
-  root to: 'store#index', as: 'store' # ...
+
+  get 'admin', to: 'admin#index'
+  match 'admin/products', to: 'admin#products', via: 'get'
+  match 'admin/product_option_value', to: 'admin#product_option_value', via: 'GET', as: 'product_option_value'
+  match 'admin/product_option_value', to: 'admin#add_product_option', via: 'PATCH', as: 'add_product_option'
+  match 'admin/category', to: 'admin#category', via: 'get'
+  match 'admin/category', to: 'admin#category_update', via: 'PATCH'
+  match 'admin/option_type',        to: 'admin#option_type', via: 'get'
+  match 'admin/option_type_update', to: 'admin#option_type_update', via: 'PATCH'
+  match 'admin/option_value',       to: 'admin#option_value', via: 'get'
+  match 'admin/option_value_update',to: 'admin#option_value_update', via: 'PATCH'
+  match 'admin/subcategory', to: 'admin#subcategory', via: 'get'
+  match 'admin/subcategory', to: 'admin#subcategory_update', via: 'PATCH'
+  match 'admin/interest', to: 'admin#interest', via: 'GET'
+  match 'admin/interest', to: 'admin#interest_create', via: 'POST'
+  match 'admin/interest', to: 'admin#interest_update', via: 'PATCH'
+
+  match '/signout', to: 'sessions#destroy', via: 'delete'
+  get '/signin', to: 'sessions#new'
+  get '/signup', to: 'users#new'
+  get "store/index"
+
+  
+  get "/:menu/:category", to: 'products#index_category', as: 'category'
+  get "/:menu/:category/:subcategory", to: 'products#index_subcategory', as: 'subcategory'
+  get "/:menu", to: 'products#index_menu', as: 'menu'
+  
+  resources :menus
+  
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

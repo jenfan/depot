@@ -1,0 +1,7 @@
+<% @product_option_values.each do |option| %>
+<%= fields_for "option_values[]", option do |o| %>
+	<%= option.option_value.title %> : <%= o.text_field :quantity, size: 2 %><br>
+	<%= o.submit %><br><BR>
+<% end end %>
+
+

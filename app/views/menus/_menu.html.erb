@@ -1,0 +1,15 @@
+  <li class="dropdown <%= "active" if menu.permalink == params[:menu] %>">
+    <a class="dropdown-toggle"
+       data-toggle=""
+       href="<%= menu_path(menu.permalink) %>">
+        <%= menu.name %>
+      <% if menu.categories.empty? %>
+      </a>
+       <% else %>
+       <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+      <%= render menu.categories, menu_permalink: menu.permalink %>
+      </ul>
+      <% end %>
+  </li>
