@@ -1,0 +1,131 @@
+$blue : #0081c2;
+
+.dropdown-menu > li {
+	.category {
+		color: $blue;	
+	}
+	.active {
+			color: #fff;
+	}
+		
+}
+
+.acitve > .subcategory {
+	color: #fff !important;
+}
+a.category {
+	font-weight: 500 !important;
+	color: #fff;
+	margin-top: 3px;
+}
+a.subcategory {
+	font-size: 10pt;
+	color: #0073bf;
+	margin-left: 10px;
+	margin-top: -5px;
+}
+
+.nav {
+	padding-left: 40px;
+}
+.nav-tabs-side {
+	padding: 0 !important;
+}
+.nav-tabs-side > .dropdown > a {
+	&:hover {
+		background-color:#0081c2 !important;
+		color: #fff
+	}
+}
+
+.nav-tabs-side > .active > a {
+	background-color: #eee;
+	&:hover {
+		background-color:#0081c2 !important;
+	}
+}
+
+/*это подменющка для верхнего меню*/
+.dropdown-menu {
+ 	margin-top: -3px;
+ 	border-radius: 2px;
+ 	.active > a {
+ 		color: #fff;
+ 	}
+ }
+ /*это для бокового*/
+.dropdown-submenu > .dropdown-menu {
+	margin-top: 0px;
+	border-radius: 2px;
+ }
+ .dropdown:hover > .dropdown-menu
+                {
+                    display: block;
+                }
+
+
+.header_bar > img {
+	margin-left: 5px;
+}
+
+.header_tel {
+	font-size: 20pt;
+	color: $blue;
+	.gray {
+		font-size: 12pt;
+		vertical-align: top; 
+	}
+}
+
+.margin-top-5 {
+	margin: 0 !important;
+	margin-top:5px !important;
+
+}
+
+.banner_top {
+	padding: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 16pt;
+	border: 1px dotted;
+	height: 84px;
+	float: left;
+	width: 80%;
+}
+.chasi_raboti {
+	vertical-align: bottom;
+	float: right;
+	height: 84px;
+	border: 1px solid orange;
+	padding: 1px;
+	text-align: center;
+	font-size: 12px;
+	.label {
+		font-size: 120%;
+	}
+}
+.logo {
+	float: left;
+	width: 210px;
+	height: 210px;
+}
+.e-mail {
+	.form-control {
+		height: 23px;
+	}
+	.btn {
+		padding: 2px 5px;
+		font-size: 12px;
+	}
+}
+.obratniy_zvonok {
+	color: $blue;
+	font-size:16pt;
+	float: right;
+}
+.slider_big {
+	overflow: hidden;
+	background: url('romashka.jpg');
+	height: 250px;
+}

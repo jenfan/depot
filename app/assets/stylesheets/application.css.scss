@@ -13,10 +13,21 @@
  */
  @import "bootstrap";
 
+$blue : #0081c2;
+
 .none {
 	display: none;
 }
 
+.gray {
+	color: gray;
+}
+.blue {
+	color: $blue
+}
+.center {
+	text-align: center;
+}
 #store {
     display: block;
     overflow: hidden;
@@ -25,13 +36,18 @@
 
   }
  .border {
- 	margin: 5px;
+ 	/*margin: 5px;*/
+ 	margin-bottom: 20px;
+ 	overflow: hidden;
  	padding: 10px 10px;
  	background-color: #fff; 
 	border-radius: 6px;
 	box-shadow: 0 0 3px 0 rgba(0,0,0,.25);
 	h3 {
 		margin: 0;
+	}
+	img {
+		margin-left: -10px;
 	}
  }
 
@@ -65,40 +81,7 @@
 	margin: 0;
 	clear: left;
 }
-.nav {
-	padding-left: 40px;
-}
-.nav-tabs-side {
-	padding: 0 !important;
-}
-.nav-tabs-side > .dropdown > a {
-	&:hover {
-		background-color:#0081c2 !important;
-		color: #fff
-	}
-}
 
-.nav-tabs-side > .active > a {
-	background-color: #eee;
-	&:hover {
-		background-color:#0081c2 !important;
-	}
-}
-
-/*это подменющка для верхнего меню*/
-.dropdown-menu {
- 	margin-top: -3px;
- 	border-radius: 2px;
- }
- /*это для бокового*/
-.dropdown-submenu > .dropdown-menu {
-	margin-top: 0px;
-	border-radius: 2px;
- }
- .dropdown:hover > .dropdown-menu
-                {
-                    display: block;
-                }
  .header {
 	display: block;
 	list-style: none;
@@ -115,6 +98,7 @@
 	clear: both;
 	overflow: hidden;
 	color: #F7EEEE;
+	border-radius: 6px;
 	vertical-align: bottom;
 	table {
 		width: 100%;
@@ -148,17 +132,5 @@
 	overflow: hidden;
 
 }
-#side {
-float:left; 
-text-align: center;
-/*padding-top: 20px;*/
-width: 195px;
-margin-bottom: 10px;
-}
 
-.dropdown-submenu{position:relative;}
-.dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 0;-moz-border-radius:0 6px 6px 0;border-radius:0 6px 6px 0;}
-.dropdown-submenu:hover>.dropdown-menu{display:block;}
-.dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
-.dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
-.dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
+

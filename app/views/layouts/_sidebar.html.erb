@@ -1,19 +1,8 @@
-<div id="side">
-	<% if @interests %>
-		<ul class="nav nav-tabs nav-tabs-side nav-stacked">
-			<div class="pull-left">Интересы</div><br>
-				<li class="dropdown active">
-					<%= form_for :interest, onclick: "submit();", method: "GET" do |f| %>
-					 <%= f.select :id, @interests, onclick: "submit();",
-                    prompt: '...' %>
-                    <%= submit_tag("ok") %>
-                    <% end %>
-				</li>
-		</ul>
-		<br>
-	<% end %>
-	<% if params[:subcategory].nil? %>
-	 	<ul class="nav nav-tabs nav-tabs-side nav-stacked">
+<div id="side" class="col-md-2">
+	<!-- открываем сайдбар -->
+	<% if params[:subcategory].nil? and !params[:category].nil? %>
+	<div class="border">
+	 	<ul class="ul-category-sidebar">
 			 <% if params[:menu] && params[:category].blank? %>
 				<div class="pull-left">Категории</div><br>
 				<%= render partial: 'layouts/categories', collection: @current_menu.categories, as: :category %>
@@ -23,30 +12,33 @@
 				<%= render partial: 'layouts/categories', collection: @current_category.subcategories, as: :category %>
 			<% end %>
 		</ul>
+	</div>
 	<% end %>
 
 <% value = params[:product][:price] || 0 if params[:product] %>
-
+<div class="border" style="padding: 10px 0">
 	<div class="pull-left">Цена: <%= value %></div><br>
 	
-	<%= form_tag '', authenticity_token: false, method: "GET" do %>
+	<%= form_tag({action: "index"}, {multipart:true, method: "GET"}) do %>
 
 		<% price = params[:product][:price] || 50 if params[:product] %>
 		<%= range_field(:product, :price, in: 1..100, value: price, onclick: "submit();") %>
-		
+
 
 	
-	<div class="pull-left">Поиск: </div><br>
 	<% @properties.each do |property| %>
-	<% array = property.property_values.where(property_id: property.id).map { |a| [a.value, a.id] } %>
-    	<p>
-            <%= property.name %> : 
-			<%= select(:property, :property_id, array, selected: params[:property_id] ,onclick: "submit();") %>
+		<% array = property.property_values.where(property_id: property.id) %>
+		<% name = property.name %>
+		<%= render partial: "layouts/one_side_filter", locals: {array: array, name: name}  %>
+    <% end %>
+
+    <%= submit_tag("Подобрать", class: "btn btn-sm btn-primary") %>
+    <BR><BR>
+    <% end %>
+</div>
+   
 
 
-    	</p>		
-    <% end %>
-    <%= submit_tag("ok") %>
-    <% end %>
+    <!-- закрыть сайдбар -->
 </div>
 

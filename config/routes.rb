@@ -1,5 +1,5 @@
 Demo::Application.routes.draw do
-  root to: 'products#index', as: 'store'
+  root to: 'products#index', as: 'root'
   get '/about', to: 'static_pages#about', as: 'about'
   get '/bonus', to: 'static_pages#bonus', as: 'bonus'
   get '/contact', to: 'static_pages#contact', as: 'contact'
@@ -16,6 +16,8 @@ Demo::Application.routes.draw do
         get 'remove_item'
       end
     end
+
+
 
 
   get 'admin', to: 'admin#index'
@@ -37,6 +39,7 @@ Demo::Application.routes.draw do
   match 'admin/interest', to: 'admin#interest', via: 'GET'
   match 'admin/interest', to: 'admin#interest_create', via: 'POST'
   match 'admin/interest', to: 'admin#interest_update', via: 'PATCH'
+  match 'admin/prototype', to: 'admin#prototype', via: 'GET'
 
   match '/signout', to: 'sessions#destroy', via: 'delete'
   get '/signin', to: 'sessions#new'

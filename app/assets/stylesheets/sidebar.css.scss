@@ -1,0 +1,55 @@
+.cat-badge {
+	color: #999;
+	font-size: .85em;
+	line-height: .85em;
+}
+
+#side {
+float:left; 
+text-align: center;
+/*padding-top: 20px;*/
+width: 195px;
+margin-bottom: 10px;
+margin-top: 22px;
+}
+
+.filter {
+	border-top:1px solid #ddd;
+	font: 13px/18px Arial,Helvetica,sans-serif;
+	text-align: left;
+	padding:8px 16px;
+	&:hover {
+		background-color: #ABD7F2;
+	}
+	.title {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+		.g-icon-h {
+			margin-left:-15px;
+		}
+	}
+	.strelka {
+	background:url(scheme_black.png?t=1398088929) 0 0 no-repeat;
+	background-position:0 -54px;
+	width: 17px;
+	height: 18px;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+	}
+}
+
+.ul-category-sidebar {
+	text-decoration: none;
+	list-style: none;
+	padding: 0px;
+	li {
+		margin-left: 8px;
+	}
+	text-align: left;
+}
+.sidebar_category {
+	color: #0073b8;
+}
