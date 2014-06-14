@@ -1,4 +1,9 @@
 Demo::Application.routes.draw do
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
+
   root to: 'products#index', as: 'root'
   get '/about', to: 'static_pages#about', as: 'about'
   get '/bonus', to: 'static_pages#bonus', as: 'bonus'

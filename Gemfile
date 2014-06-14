@@ -9,6 +9,9 @@ gem 'capistrano', '>= 3.0'
 gem 'pg', '0.17.1'
 gem 'turbolinks'
 
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'devise',              github: 'plataformatec/devise'
+
 group :development do
 	gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba'
 	gem 'sqlite3'
