@@ -221,6 +221,7 @@ DEPENDENCIES
   faker (= 1.1.2)
   jbuilder (~> 1.2)
   jquery-rails (~> 2.3.0)
+  kaminari
   pg (= 0.17.1)
   rails (= 4.0.2)
   rails_12factor (= 0.0.2)

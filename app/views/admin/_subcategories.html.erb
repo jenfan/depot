@@ -1,8 +1,0 @@
-<% if @catcheck.to_i==1 %>
-		<a style="margin-left: 50px;" class="label label-success" href="categoryjs?category=<%= @category.find_by_id(@catnum.to_i).id%>&catcheck=2&render=category" data-remote="true"> <%= @category.find_by_id(@catnum.to_i).name %><span class="glyphicon glyphicon-pencil" style="margin-left: 10px;"></span></a>
-		<% @mysub.each do |subcategory| %>
-				<br><a style="margin-left: 100px;" class="label label-warning" href="categoryjs?category=<%= @category.find_by_id(@catnum.to_i).id%>&catcheck=1" data-remote="true"> <%= subcategory.name %><span class="glyphicon glyphicon-pencil" style="margin-left: 10px;"></span></a>
-		<% end %>
-		<% else %>
-		<a style="margin-left: 50px;" class="label label-success" href="categoryjs?category=<%= @category.find_by_id(@catnum.to_i).id%>&catcheck=1&render=category" data-remote="true"> <%= @category.find_by_id(@catnum.to_i).name %><span class="glyphicon glyphicon-pencil" style="margin-left: 10px;"></span></a>
-<% end %>
